@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./boot/bootstrap.css">
+    <link rel="stylesheet" href="./css/css.css">
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+
+    <div class="container">
+
+        
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <i class="fa-solid fa-tooth me-2"></i>
+            ابتسامة
+        </a>
+
+        
+        <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto flex-row gap-4">
+
+                <li class="nav-item">
+                    <a class="nav-link active fw-semibold text-primary"
+                    href="./index.html">
+                        الصفحة الرئيسية
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#services">
+                        الخدمات
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        الكشوفات
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contact">
+                        اتصل بنا
+                    </a>
+                </li>
+
+            </ul>
+
+            
+            <div class="d-flex align-items-center gap-2">
+
+                <a href="./index1.html"
+                class="btn btn-outline-primary rounded-3">
+
+                    <i class="fa-solid fa-user me-1"></i>
+                    الصفحة الشخصية
+
+                </a>
+
+                <a href="index.html#booking"
+                class="btn btn-primary rounded-3">
+
+                    <i class="fa-solid fa-calendar-check me-1"></i>
+                    حجز موعد
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+<section class="container py-5">
+
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h4 class="fw-bold mb-0">
+                المعلومات الشخصية
+            </h4>
+
+            <button class="btn btn-outline-primary" onclick="editProfile()">
+                <i class="fa-solid fa-pen-to-square me-2"></i>
+                تعديل الملف الشخصي
+            </button>
+
+        </div>
+
+        <div class="row g-4">
+
+        
+            <div class="col-md-3 text-center">
+
+                
+
+                <h5 class="fw-bold mt-3 mb-1" id="profileDisplayName">
+                    mark
+                </h5>
+
+                <span class="text-muted">
+                    مريض
+                </span>
+
+            </div>
+
+            <!-- Patient Information -->
+            <div class="col-md-9">
+
+                <div class="row">
+
+                    <div class="col-12 mb-3" id="patientName">
+                        <label class="text-muted small">
+                       <h2> الاسم بالكامل</h2>
+                        </label>
+                        <p class="fw-semibold mb-0">
+                            mark
+                        </p>
+                    </div>
+
+                    <div class="col-12 mb-3" id="patientEmail">
+                        <label class="text-muted small">
+                            البريد الإلكتروني
+                        </label>
+                        <p class="fw-semibold mb-0">
+                            example@gmail.com
+                        </p>
+                    </div>
+
+                    <div class="col-12 mb-3" id="patientPhone">
+                        <label class="text-muted small">
+                            
+                        </label>
+                        <p class="fw-semibold mb-0">
+                            01000000000
+                        </p>
+                    </div>
+
+                    <div class="col-12 mb-3" id="patientBirth">
+                        <label class="text-muted small">
+                            تاريخ الميلاد
+                        </label>
+                        <p class="fw-semibold mb-0">
+                            01 / 01 / 2005
+                        </p>
+                    </div>
+
+                    <div class="col-12 mb-3" id="patientGender">
+                        <label class="text-muted small">
+                            النوع
+                        </label>
+                        <p class="fw-semibold mb-0">
+                            ذكر
+                        </p>
+                    </div>
+
+                    <div class="col-12 mb-3" id="patientAddress">
+                        <label class="text-muted small">
+                            العنوان
+                        </label>
+                        <p class="fw-semibold mb-0">
+                            الجيزة، مصر
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="card border-0 shadow-sm rounded-4 p-4 mt-4 d-none" id="editProfileCard">
+
+    <h4 class="fw-bold mb-4">تعديل الملف الشخصي</h4>
+
+    <div class="mb-3">
+        <label class="form-label">الاسم بالكامل</label>
+        <input type="text" class="form-control" id="editName">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">البريد الإلكتروني </label>
+        <input type="email" class="form-control" id="editEmail">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">رقم الهاتف</label>
+        <input type="tel" class="form-control" id="editPhone">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">تاريخ الميلاد</label>
+        <input type="text" class="form-control" id="editBirth">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">النوع</label>
+        <select class="form-select" id="editGender">
+            <option value="ذكر">ذكر</option>
+            <option value="أنثى">أنثى</option>
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label">العنوان</label>
+        <input type="text" class="form-control" id="editAddress">
+    </div>
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-primary" onclick="saveProfile()">
+            حفظ التعديلات
+        </button>
+
+        <button class="btn btn-outline-secondary" onclick="cancelEdit()">
+            إلغاء
+        </button>
+    </div>
+
+</div>
+
+<section class="container pb-5">
+
+    <h4 class="fw-bold mb-4">
+        نشاطي في المركز
+    </h4>
+
+    <div class="row g-4">
+
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3">
+                        <i class="fa-solid fa-tooth fa-xl"></i>
+                    </div>
+
+                    <h5 class="fw-bold mb-0">
+                        الكشوفات السابقة
+                    </h5>
+
+                </div>
+
+                <h3 class="fw-bold text-primary">5</h3>
+
+                <p class="text-muted mb-0">
+                    إجمالي الكشوفات التي أجريتها في المركز
+                </p>
+
+            </div>
+
+        </div>
+
+
+        
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <div class="bg-success bg-opacity-10 text-success rounded-3 p-3">
+                        <i class="fa-solid fa-calendar-check fa-xl"></i>
+                    </div>
+
+                    <h5 class="fw-bold mb-0">
+                        الموعد القادم
+                    </h5>
+
+                </div>
+
+                <h5 class="fw-bold">
+                    20 نوفمبر 2026
+                </h5>
+
+                <p class="text-muted mb-2">
+                    الساعة 5:00 مساءً
+                </p>
+
+                <span class="badge bg-success align-self-start">
+                    تم تأكيد الموعد
+                </span>
+
+            </div>
+
+        </div>
+
+
+        
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <div class="bg-warning bg-opacity-10 text-warning rounded-3 p-3">
+                        <i class="fa-solid fa-calendar-plus fa-xl"></i>
+                    </div>
+
+                    <h5 class="fw-bold mb-0">
+                        الحجوزات
+                    </h5>
+
+                </div>
+
+                <h3 class="fw-bold text-warning">3</h3>
+
+                <p class="text-muted mb-2">
+                    إجمالي الحجوزات
+                </p>
+
+                <span class="badge bg-warning text-dark align-self-start">
+                    حجز واحد قادم
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container pb-5">
+
+   
+    <h4 class="fw-bold mb-4">
+        السجل الطبي للمريض
+    </h4>
+
+    <div class="row g-4">
+
+        <!-- Examination Results -->
+        <div class="col-12">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+
+                <h5 class="fw-bold mb-3">
+                    <i class="fa-solid fa-stethoscope text-primary me-2"></i>
+                    نتيجة الكشف والتشخيص
+                </h5>
+
+                <div class="bg-light rounded-3 p-3">
+
+                    <p class="mb-2">
+                        <strong>تاريخ الكشف:</strong>
+                        10 نوفمبر 2026
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>اسم الطبيب:</strong>
+                        د. أحمد محمد
+                    </p>
+
+                    <p class="mb-2">
+                        <strong>التشخيص:</strong>
+                        تسوس في الضرس الخلفي الأيمن
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>نتيجة الكشف:</strong>
+                        يحتاج المريض إلى تنظيف الأسنان وعلاج التسوس.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-12 col-lg-6">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <h5 class="fw-bold mb-3">
+                    <i class="fa-solid fa-pills text-primary me-2"></i>
+                    الأدوية والعلاجات
+                </h5>
+
+                <div class="border rounded-3 p-3 mb-3">
+
+                    <h6 class="fw-bold">
+                        العلاج الأول
+                    </h6>
+
+                    <p class="text-muted mb-1">
+                        اسم الدواء: مسجل في الروشتة
+                    </p>
+
+                    <p class="text-muted mb-1">
+                        الجرعة: حسب وصف الطبيب
+                    </p>
+
+                    <span class="badge bg-success">
+                        مستمر
+                    </span>
+
+                </div>
+
+                <div class="border rounded-3 p-3">
+
+                    <h6 class="fw-bold">
+                        العلاج الثاني
+                    </h6>
+
+                    <p class="text-muted mb-1">
+                        اسم الدواء: مسجل في الروشتة
+                    </p>
+
+                    <p class="text-muted mb-1">
+                        Amoxicillin 500mg
+                        <hr>
+                        metronidazole 500mg
+                        <hr>
+                        lbuprofen 400mg
+                        
+                    </p>
+
+                    <span class="badge bg-secondary">
+                        مكتمل
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-12 col-lg-6">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <h5 class="fw-bold mb-3">
+                    <i class="fa-solid fa-notes-medical text-primary me-2"></i>
+                    ملخص الحالة الصحية
+                </h5>
+
+                <div class="mb-3">
+
+                    <label class="text-muted small">
+                        الحالة العامة للأسنان
+                    </label>
+
+                    <p class="fw-semibold mb-0">
+                        حالة جيدة مع وجود بعض المشاكل البسيطة.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <div class="mb-3">
+
+                    <label class="text-muted small">
+                        الحساسية
+                    </label>
+
+                    <p class="fw-semibold mb-0">
+                        لا توجد حساسية مسجلة.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <div class="mb-3">
+
+                    <label class="text-muted small">
+                        الأمراض المزمنة
+                    </label>
+
+                    <p class="fw-semibold mb-0">
+                        لا توجد أمراض مسجلة.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <div>
+
+                    <label class="text-muted small">
+                        ملاحظات الطبيب
+                    </label>
+
+                    <p class="fw-semibold mb-0">
+                        يحتاج المريض إلى متابعة دورية والاهتمام بنظافة الأسنان.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-12">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+
+                <h5 class="fw-bold mb-4">
+                    <i class="fa-solid fa-tooth text-primary me-2"></i>
+                    سجل علاجات الأسنان والحشو
+                </h5>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle text-center">
+
+                        <thead class="table-light">
+
+                            <tr>
+                                <th>رقم السن</th>
+                                <th>نوع العلاج</th>
+                                <th>تاريخ العلاج</th>
+                                <th>الحالة</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>16</td>
+                                <td>حشو عادي</td>
+                                <td>10 / 11 / 2026</td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        مكتمل
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>26</td>
+                                <td>تنظيف الأسنان</td>
+                                <td>05 / 11 / 2026</td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        مكتمل
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>36</td>
+                                <td>علاج تسوس</td>
+                                <td>20 / 11 / 2026</td>
+                                <td>
+                                    <span class="badge bg-warning text-dark">
+                                        قيد المتابعة
+                                    </span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+    <script src="./js/script.js"></script>
+    <script src="./boot/bootstrap.bundle.js"></script>
+</body>
+</html>
