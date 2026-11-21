@@ -1,0 +1,274 @@
+
+
+
+
+:root {
+    --dark-blue: #071B2B;
+    --teal: #167D8D;
+    --light-blue: #B9E4E8;
+    --light-gray: #EEEEEE;
+    --white: #FFFFFF;
+}
+
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--dark-blue);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    overflow-x: hidden;
+}
+
+section {
+    scroll-margin-top: 80px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--dark-blue);
+}
+
+p {
+    line-height: 1.8;
+}
+
+
+
+
+.navbar {
+    background-color: var(--white) !important;
+}
+
+.navbar-brand {
+    color: var(--dark-blue) !important;
+    font-size: 24px;
+}
+
+.navbar-brand i {
+    color: var(--teal);
+}
+
+.navbar .nav-link {
+    color: var(--dark-blue);
+    transition: 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--teal) !important;
+}
+
+
+
+.btn-primary {
+    background-color: var(--teal) !important;
+    border-color: var(--teal) !important;
+    color: var(--white) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-blue) !important;
+    border-color: var(--dark-blue) !important;
+    transform: translateY(-2px);
+}
+
+.btn {
+    transition: 0.3s ease;
+}
+
+
+
+
+.hero-section {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.hero-section h1 {
+    color: var(--white);
+}
+
+.hero-section p {
+    color: var(--light-blue);
+}
+
+.hero-section img {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.card {
+    border: none;
+    border-radius: 18px;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(7, 27, 43, 0.12) !important;
+}
+
+.card i {
+    transition: 0.3s;
+}
+
+.card:hover i {
+    transform: scale(1.08);
+}
+
+
+
+
+#about .card button {
+    color: var(--dark-blue);
+    background-color: var(--white);
+}
+
+#about .card button:hover {
+    background-color: var(--light-gray);
+}
+
+#doctorInfo,
+#clinicInfo {
+    background-color: var(--white);
+}
+
+#about .card-body {
+    background-color: var(--white);
+}
+
+
+
+#services {
+    background-color: var(--light-gray);
+}
+
+#services .card {
+    background-color: var(--white);
+}
+
+#services .card i {
+    color: var(--teal) !important;
+}
+
+
+
+
+
+.fa-bullseye,
+.fa-heart {
+    color: var(--teal);
+}
+
+
+
+
+#booking {
+    background-color: var(--dark-blue);
+}
+
+#booking h2 {
+    color: var(--white);
+}
+
+
+
+#contact .card {
+    background-color: var(--white);
+}
+
+#contact .card i {
+    color: var(--teal);
+}
+
+
+
+
+footer {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+footer h5 {
+    color: var(--white);
+}
+
+footer p {
+    color: var(--light-blue);
+}
+
+
+
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+
+
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-section h1 {
+        font-size: 32px;
+    }
+
+    .navbar-nav {
+        gap: 5px !important;
+    }
+
+    #about .card button {
+        padding: 15px !important;
+    }
+
+}
+
+
+
+#about .card {
+    border: none !important;
+    box-shadow: 0 5px 20px rgba(7, 27, 43, 0.10) !important;
+    border-radius: 18px !important;
+    overflow: hidden;
+}
+
+#about .card > button {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+ 
+
+#about .card-body {
+    border-top: none !important;
+}
+
+
+#about .card:hover {
+    box-shadow: 0 10px 30px rgba(7, 27, 43, 0.16) !important;
+    transform: translateY(-3px);
+}
+
+
+#services .card {
+    border: none !important;
+    box-shadow: 0 5px 20px rgba(7, 27, 43, 0.10) !important;
+    border-radius: 18px !important;
+}
+
+#services .card:hover {
+    box-shadow: 0 10px 30px rgba(7, 27, 43, 0.16) !important;
+    transform: translateY(-5px);
+}

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container">
+
+        
+        <a class="navbar-brand fw-bold text-primary" href="#">
+            <i class="fa-solid fa-tooth me-2"></i>
+            ابتسامه
+        </a>
+
+        
+        <ul class="navbar-nav mx-auto flex-row gap-4">
+
+            <li class="nav-item">
+                <a class="nav-link active fw-semibold text-primary" href="#">
+                    الصفحة الرئيسية
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    الخدمات
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    الكشوفات
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    اتصل بنا
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="hero-section py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6 text-white">
+
+                <span class="badge mb-3 p-2"
+                style="background-color: #167D8D;">
+                    مرحباً بك في عيادة ابتسامة
+                </span>
+
+                <h1 class="fw-bold display-5 mb-4">
+                    ابتسامتك تستحق
+                    <span style="color: #B9E4E8;">
+                        أفضل رعاية
+                    </span>
+                </h1>
+
+                <p class="lead mb-4" style="color: #B9E4E8;">
+                    نهتم بصحة أسنانك ونقدم لك رعاية طبية متميزة
+                    في بيئة مريحة وآمنة.
+                </p>
+
+                <a href="#booking"
+                class="btn btn-lg rounded-3 text-white"
+                style="background-color: #167D8D;">
+                    احجز موعدك الآن
+                    <i class="fa-solid fa-arrow-left me-2"></i>
+                </a>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900"
+                class="img-fluid rounded-4 shadow"
+                alt="عيادة أسنان">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- About Section -->
+<section class="container py-5" id="about">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+            تعرف علينا
+        </h2>
+
+        <p class="text-muted mt-3">
+            نسعى دائماً لتقديم أفضل رعاية لصحة أسنانك وابتسامتك.
+        </p>
+
+    </div>
+
+
+    <!-- Doctor Card -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+
+        <button class="btn text-end p-4 w-100"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#doctorInfo"
+        aria-expanded="false">
+
+            <div class="d-flex align-items-center justify-content-between">
+
+                <div class="d-flex align-items-center gap-3">
+
+                    <div class="rounded-3 p-3"
+                    style="background-color: #B9E4E8; color: #071B2B;">
+
+                        <i class="fa-solid fa-user-doctor fa-xl"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h5 class="fw-bold mb-1">
+                            معلومات عن الدكتور
+                        </h5>
+
+                        <small class="text-muted">
+                            تعرف على طبيبك وخبراته
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-down text-primary"></i>
+
+            </div>
+
+        </button>
+
+
+        <div class="collapse" id="doctorInfo">
+
+            <div class="card-body p-4">
+
+                <div class="row align-items-center g-4">
+
+                   
+
+                    <div class="col-md-9">
+
+                        <h4 class="fw-bold">
+                            د. أحمد محمد
+                        </h4>
+
+                        <p class="text-primary fw-semibold">
+                            طبيب أسنان
+                        </p>
+
+                        <p class="text-muted">
+                            يسعى الدكتور إلى تقديم رعاية متكاملة
+                            للمرضى والاهتمام بصحة الأسنان
+                            باستخدام أحدث أساليب العلاج.
+                        </p>
+
+                        <p class="mb-2">
+                            <i class="fa-solid fa-graduation-cap text-primary me-2"></i>
+                            المؤهل: بكالوريوس طب وجراحة الفم والأسنان.
+                        </p>
+
+                        <p class="mb-0">
+                            <i class="fa-solid fa-tooth text-primary me-2"></i>
+                            التخصص: علاج وتجميل الأسنان.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Clinic Card -->
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+        <button class="btn text-end p-4 w-100"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#clinicInfo"
+        aria-expanded="false">
+
+            <div class="d-flex align-items-center justify-content-between">
+
+                <div class="d-flex align-items-center gap-3">
+
+                    <div class="rounded-3 p-3"
+                    style="background-color: #B9E4E8; color: #071B2B;">
+
+                        <i class="fa-solid fa-hospital fa-xl"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h5 class="fw-bold mb-1">
+                            معلومات عن العيادة
+                        </h5>
+
+                        <small class="text-muted">
+                            تعرف على مركزنا ورؤيتنا
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-down text-primary"></i>
+
+            </div>
+
+        </button>
+
+
+        <div class="collapse" id="clinicInfo">
+
+            <div class="card-body  p-4">
+
+                <h5 class="fw-bold">
+                    عيادة ابتسامة للأسنان
+                </h5>
+
+                <p class="text-muted">
+                    عيادة متخصصة في تقديم خدمات طب الأسنان
+                    والعناية بصحة الفم، ونسعى إلى توفير
+                    تجربة علاجية مريحة ومميزة لكل مريض.
+                </p>
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <i class="fa-solid fa-location-dot text-primary me-2"></i>
+                     العنوان:  ميدان المسلسل برج الأطباء
+                     <br> 
+٦ اكتوبر جانب مساكن الظباط بالفردوس
+                    </div>
+
+                    <div class="col-md-6">
+                        <i class="fa-solid fa-phone text-primary me-2"></i>
+                        الهاتف: 01000000000
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Services Section -->
+<section class="py-5" id="services"
+style="background-color: #EEEEEE;">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+                خدماتنا
+            </h2>
+
+            <p class="text-muted">
+                نقدم مجموعة من الخدمات للعناية بصحة أسنانك.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100">
+
+                    <i class="fa-solid fa-tooth fa-2x text-primary mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        فحص الأسنان
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        فحص شامل للأسنان وتحديد المشكلات.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100">
+
+                    <i class="fa-solid fa-teeth fa-2x text-primary mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        تنظيف الأسنان
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        إزالة الجير والاهتمام بنظافة الأسنان.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100">
+
+                    <i class="fa-solid fa-syringe fa-2x text-primary mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        حشو الأسنان
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        علاج التسوس والحفاظ على الأسنان.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100">
+
+                    <i class="fa-solid fa-face-smile fa-2x text-primary mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        تجميل الأسنان
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        تحسين مظهر الأسنان والابتسامة.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Goals Section -->
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+            هدفنا ورسالتنا
+        </h2>
+
+        <p class="text-muted">
+            نعمل من أجل ابتسامة صحية تدوم طويلاً.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <div class="col-md-6">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <i class="fa-solid fa-bullseye fa-2x text-primary mb-3"></i>
+
+                <h5 class="fw-bold">
+                    هدفنا
+                </h5>
+
+                <p class="text-muted mb-0">
+                    توفير رعاية طبية متميزة تساعد المرضى
+                    على الحفاظ على صحة أسنانهم وتحسين
+                    جودة حياتهم.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <i class="fa-solid fa-heart fa-2x text-primary mb-3"></i>
+
+                <h5 class="fw-bold">
+                    رسالتنا
+                </h5>
+
+                <p class="text-muted mb-0">
+                    الاهتمام بكل مريض وتقديم تجربة علاجية
+                    قائمة على الراحة والثقة والجودة
+                    والاهتمام بالتفاصيل.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Booking Section -->
+<section class="py-5 text-center text-white"
+id="booking"
+style="background-color: #071B2B;">
+
+    <div class="container">
+
+        <h2 class="fw-bold mb-3">
+            ابتسامتك تبدأ بخطوة
+        </h2>
+
+        <p class="mb-4" style="color: #B9E4E8;">
+            لا تتردد في الاهتمام بصحة أسنانك، تواصل معنا واحجز موعدك.
+        </p>
+
+        <a href="#contact"
+        class="btn btn-lg rounded-3 text-white"
+        style="background-color: #167D8D;">
+            تواصل معنا الآن
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- Contact Section -->
+<section class="container py-5" id="contact">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+            تواصل معنا
+        </h2>
+
+        <p class="text-muted">
+            يسعدنا استقبال استفساراتك.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4 text-center">
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <i class="fa-solid fa-phone fa-2x text-primary mb-3"></i>
+
+                <h5 class="fw-bold">
+                    الهاتف
+                </h5>
+
+                <p class="text-muted mb-0">
+                    01000000000
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <i class="fa-solid fa-location-dot fa-2x text-primary mb-3"></i>
+
+                <h5 class="fw-bold">
+                    العنوان
+                </h5>
+
+                <p class="text-muted mb-0">
+                    العنوان:  ميدان المسلسل برج الأطباء 
+                    <br>
+٦ اكتوبر جانب مساكن الظباط بالفردوس
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <i class="fa-solid fa-clock fa-2x text-primary mb-3"></i>
+
+                <h5 class="fw-bold">
+                    مواعيد العمل
+                </h5>
+
+                <p class="text-muted mb-0">
+                نعمل طول الاسبوع بي اختلاف العياده
+                </p>
+            
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+<footer class="py-4 text-white"
+style="background-color: #071B2B;">
+
+    <div class="container text-center">
+
+        <h5 class="fw-bold mb-3">
+            <i class="fa-solid fa-tooth me-2"></i>
+            ابتسامة
+        </h5>
+
+        <p style="color: #B9E4E8;">
+            نهتم بابتسامتك لأنها تستحق الأفضل.
+        </p>
+
+        <hr style="border-color: #167D8D;">
+
+        <p class="mb-0 small">
+            جميع الحقوق محفوظة © 2026 عيادة ابتسامة
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="./boot/bootstrap.bundle.js"></script>
+
+
+</body>
+</html>

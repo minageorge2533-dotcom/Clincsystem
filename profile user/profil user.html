@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الصفحة الشخصية للمريض</title>
+
+    <link rel="stylesheet" href="./boot/bootstrap.css">
+    <link rel="stylesheet" href="./css/profil user.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <i class="fa-solid fa-tooth me-2"></i>
+            ابتسامة
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto flex-row gap-4">
+
+                <li class="nav-item">
+                    <a class="nav-link active fw-semibold text-primary"
+                        href="./LANDING wep.html">
+                        الصفحة الرئيسية
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#services">
+                        الخدمات
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html#contact">
+                        اتصل بنا
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+
+                <a href="./index1.html"
+                    class="btn btn-outline-primary rounded-3">
+
+                    <i class="fa-solid fa-user me-1"></i>
+                    الصفحة الشخصية
+
+                </a>
+
+                <a href="index.html#booking"
+                    class="btn btn-primary rounded-3">
+
+                    <i class="fa-solid fa-calendar-check me-1"></i>
+                    حجز موعد
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= PATIENT PROFILE ================= -->
+
+<section class="container py-5">
+
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h4 class="fw-bold mb-0">
+                المعلومات الشخصية
+            </h4>
+
+            <button class="btn btn-outline-primary" onclick="editProfile()">
+
+                <i class="fa-solid fa-pen-to-square me-2"></i>
+                تعديل الملف الشخصي
+
+            </button>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-3 text-center">
+
+                <div class="rounded-circle bg-primary bg-opacity-10
+                    text-primary d-flex align-items-center justify-content-center
+                    mx-auto" style="width:110px;height:110px;">
+
+                    <i class="fa-solid fa-user fa-3x"></i>
+
+                </div>
+
+                <h5 class="fw-bold mt-3 mb-1" id="profileDisplayName">
+                    اسم المريض
+                </h5>
+
+                <span class="text-muted">
+                    مريض
+                </span>
+
+            </div>
+
+
+            <!-- Patient Information -->
+
+            <div class="col-md-9">
+
+                <div class="row">
+
+                    <div class="col-12 mb-3">
+
+                        <label class="text-muted small">
+                            الاسم بالكامل
+                        </label>
+
+                        <p class="fw-semibold mb-0" id="patientName">
+                            --
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label class="text-muted small">
+                            البريد الإلكتروني
+                        </label>
+
+                        <p class="fw-semibold mb-0" id="patientEmail">
+                            --
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label class="text-muted small">
+                            رقم الهاتف
+                        </label>
+
+                        <p class="fw-semibold mb-0" id="patientPhone">
+                            --
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label class="text-muted small">
+                            تاريخ الميلاد
+                        </label>
+
+                        <p class="fw-semibold mb-0" id="patientBirth">
+                            --
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label class="text-muted small">
+                            النوع
+                        </label>
+
+                        <p class="fw-semibold mb-0" id="patientGender">
+                            --
+                        </p>
+
+                    </div>
+
+
+                    <div class="col-12 mb-3">
+
+                        <label class="text-muted small">
+                            العنوان
+                        </label>
+
+                        <p class="fw-semibold mb-0" id="patientAddress">
+                            --
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= EDIT PROFILE ================= -->
+
+    <div class="card border-0 shadow-sm rounded-4 p-4 mt-4 d-none"
+        id="editProfileCard">
+
+        <h4 class="fw-bold mb-4">
+            تعديل الملف الشخصي
+        </h4>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                الاسم بالكامل
+            </label>
+
+            <input type="text" class="form-control" id="editName">
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                البريد الإلكتروني
+            </label>
+
+            <input type="email" class="form-control" id="editEmail">
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                رقم الهاتف
+            </label>
+
+            <input type="tel" class="form-control" id="editPhone">
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                تاريخ الميلاد
+            </label>
+
+            <input type="date" class="form-control" id="editBirth">
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                النوع
+            </label>
+
+            <select class="form-select" id="editGender">
+
+                <option value="ذكر">ذكر</option>
+                <option value="أنثى">أنثى</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                العنوان
+            </label>
+
+            <input type="text" class="form-control" id="editAddress">
+
+        </div>
+
+
+        <div class="d-flex gap-2">
+
+            <button class="btn btn-primary" onclick="saveProfile()">
+                حفظ التعديلات
+            </button>
+
+            <button class="btn btn-outline-secondary" onclick="cancelEdit()">
+                إلغاء
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PATIENT ACTIVITY ================= -->
+
+<section class="container pb-5">
+
+    <h4 class="fw-bold mb-4">
+        نشاطي في المركز
+    </h4>
+
+    <div class="row g-4">
+
+
+        <!-- Previous Examinations -->
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <div class="bg-primary bg-opacity-10 text-primary rounded-3 p-3">
+
+                        <i class="fa-solid fa-tooth fa-xl"></i>
+
+                    </div>
+
+                    <h5 class="fw-bold mb-0">
+                        الكشوفات السابقة
+                    </h5>
+
+                </div>
+
+                <h3 class="fw-bold text-primary" id="examinationsCount">
+                    0
+                </h3>
+
+                <p class="text-muted mb-0">
+                    إجمالي الكشوفات التي أجريتها في المركز
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Next Appointment -->
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <div class="bg-success bg-opacity-10 text-success rounded-3 p-3">
+
+                        <i class="fa-solid fa-calendar-check fa-xl"></i>
+
+                    </div>
+
+                    <h5 class="fw-bold mb-0">
+                        الموعد القادم
+                    </h5>
+
+                </div>
+
+                <h5 class="fw-bold" id="nextAppointmentDate">
+                    لا يوجد موعد
+                </h5>
+
+                <p class="text-muted mb-2" id="nextAppointmentTime">
+                    --
+                </p>
+
+                <span class="badge bg-success align-self-start"
+                    id="nextAppointmentStatus">
+
+                    --
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bookings -->
+
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <div class="bg-warning bg-opacity-10 text-warning rounded-3 p-3">
+
+                        <i class="fa-solid fa-calendar-plus fa-xl"></i>
+
+                    </div>
+
+                    <h5 class="fw-bold mb-0">
+                        الحجوزات
+                    </h5>
+
+                </div>
+
+                <h3 class="fw-bold text-warning" id="bookingsCount">
+                    0
+                </h3>
+
+                <p class="text-muted mb-2">
+                    إجمالي الحجوزات
+                </p>
+
+                <span class="badge bg-warning text-dark align-self-start"
+                    id="upcomingBookings">
+
+                    لا توجد حجوزات قادمة
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MEDICAL RECORD ================= -->
+
+<section class="container pb-5">
+
+    <h4 class="fw-bold mb-4">
+        السجل الطبي للمريض
+    </h4>
+
+    <div class="row g-4">
+
+
+        <!-- Examination Results -->
+
+        <div class="col-12">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+
+                <h5 class="fw-bold mb-3">
+
+                    <i class="fa-solid fa-stethoscope text-primary me-2"></i>
+                    نتيجة الكشف والتشخيص
+
+                </h5>
+
+                <div id="examinationResults">
+
+                    <div class="bg-light rounded-3 p-3">
+
+                        <p class="mb-0 text-muted">
+                            لا توجد نتائج كشف مسجلة حتى الآن.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Medications -->
+
+        <div class="col-12 col-lg-6">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <h5 class="fw-bold mb-3">
+
+                    <i class="fa-solid fa-pills text-primary me-2"></i>
+                    الأدوية والعلاجات
+
+                </h5>
+
+                <div id="medicationsList">
+
+                    <p class="text-muted">
+                        لا توجد أدوية مسجلة.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Health Summary -->
+
+        <div class="col-12 col-lg-6">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+
+                <h5 class="fw-bold mb-3">
+
+                    <i class="fa-solid fa-notes-medical text-primary me-2"></i>
+                    ملخص الحالة الصحية
+
+                </h5>
+
+                <div id="healthSummary">
+
+                    <p class="text-muted">
+                        لا يوجد ملخص طبي مسجل.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Dental Treatments -->
+
+        <div class="col-12">
+
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+
+                <h5 class="fw-bold mb-4">
+
+                    <i class="fa-solid fa-tooth text-primary me-2"></i>
+                    سجل علاجات الأسنان والحشو
+
+                </h5>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle text-center">
+
+                        <thead class="table-light">
+
+                            <tr>
+
+                                <th>رقم السن</th>
+                                <th>نوع العلاج</th>
+                                <th>تاريخ العلاج</th>
+                                <th>الحالة</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="dentalTreatmentsList">
+
+                            <tr>
+
+                                <td colspan="4" class="text-muted">
+                                    لا توجد علاجات مسجلة.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SCRIPTS ================= -->
+
+<script src="./boot/bootstrap.bundle.js"></script>
+<script src="./js/profil user.js"></script>
+
+</body>
+</html>
