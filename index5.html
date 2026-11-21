@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>لوحة تحكم الطبيب</title>
+
+    <!-- Bootstrap RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+
+        :root {
+            --main-color: #071B2B;
+            --second-color: #167D8D;
+            --light-color: #f4f7f9;
+        }
+
+        body {
+            background: var(--light-color);
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Sidebar */
+
+        .sidebar {
+            background: var(--main-color);
+            min-height: 100vh;
+            padding: 25px 15px;
+            color: white;
+        }
+
+        .brand {
+            text-align: center;
+            padding: 15px 0 30px;
+            border-bottom: 1px solid #ffffff20;
+        }
+
+        .brand i {
+            font-size: 35px;
+            color: #32b5c2;
+        }
+
+        .brand h5 {
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #cbd5df;
+            text-decoration: none;
+            padding: 13px 15px;
+            margin: 7px 0;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: var(--second-color);
+            color: white;
+        }
+
+        .sidebar a i {
+            margin-left: 10px;
+            width: 20px;
+        }
+
+        /* Main Content */
+
+        .main-content {
+            padding: 25px;
+        }
+
+        .topbar {
+            background: white;
+            padding: 18px 25px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px #00000008;
+        }
+
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .doctor-icon {
+            width: 45px;
+            height: 45px;
+            background: #e0f2f3;
+            color: var(--second-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        /* Statistics */
+
+        .stat-card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px #00000008;
+            height: 100%;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e0f2f3;
+            color: var(--second-color);
+            border-radius: 10px;
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            font-weight: bold;
+            color: var(--main-color);
+        }
+
+        .stat-card p {
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        /* Sections */
+
+        .content-card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            margin-top: 25px;
+            box-shadow: 0 2px 10px #00000008;
+        }
+
+        .section-title {
+            color: var(--main-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .btn-main {
+            background: var(--second-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-main:hover {
+            background: var(--main-color);
+            color: white;
+        }
+
+        .clinic-select {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .table th {
+            background: #f4f7f9;
+            color: var(--main-color);
+            white-space: nowrap;
+        }
+
+        .table td {
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .badge-confirmed {
+            background: #d1f3e0;
+            color: #16834b;
+        }
+
+        .badge-pending {
+            background: #fff0cc;
+            color: #a66c00;
+        }
+
+        .badge-cancelled {
+            background: #ffe0e0;
+            color: #c0392b;
+        }
+
+        .schedule-item {
+            padding: 15px;
+            border-right: 4px solid var(--second-color);
+            background: #f5f9fa;
+            border-radius: 7px;
+            margin-bottom: 12px;
+        }
+
+        .schedule-item strong {
+            color: var(--main-color);
+        }
+
+        @media (max-width: 767px) {
+
+            .sidebar {
+                min-height: auto;
+            }
+
+            .sidebar nav {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .sidebar a {
+                font-size: 13px;
+                padding: 10px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-lg-2 sidebar">
+
+            <div class="brand">
+                <i class="fa-solid fa-tooth"></i>
+                <h5>عيادة الأسنان</h5>
+                <small>لوحة تحكم الطبيب</small>
+            </div>
+
+            <nav class="mt-4">
+
+                <a href="#home" class="active">
+                    <i class="fa-solid fa-house"></i>
+                    الرئيسية
+                </a>
+
+                <a href="#bookings">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    الحجوزات
+                </a>
+
+                <a href="#payments">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    المدفوعات
+                </a>
+
+                <a href="#appointments">
+                    <i class="fa-solid fa-clock"></i>
+                    المواعيد
+                </a>
+
+                <a href="#clinics">
+                    <i class="fa-solid fa-hospital"></i>
+                    العيادات
+                </a>
+
+                <a href="#patients">
+                    <i class="fa-solid fa-users"></i>
+                    المرضى
+                </a>
+
+                <a href="Profile.html">
+                    <i class="fa-solid fa-user-doctor"></i>
+                    الملف الشخصي
+                </a>
+
+                <a href="Login.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    تسجيل الخروج
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="col-lg-10 main-content">
+
+            <!-- Topbar -->
+            <div class="topbar" id="home">
+
+                <div>
+                    <h5 class="fw-bold mb-1">لوحة التحكم</h5>
+                    <small class="text-muted">
+                        مرحباً بك دكتور، نتمنى لك يوماً موفقاً
+                    </small>
+                </div>
+
+                <div class="doctor-info">
+
+                    <div class="text-start">
+                        <strong>د. أحمد محمد</strong>
+                        <br>
+                        <small class="text-muted">طبيب أسنان</small>
+                    </div>
+
+                    <div class="doctor-icon">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Clinic Selection -->
+            <div class="content-card mt-0" id="clinics">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-6 mb-3 mb-md-0">
+
+                        <h5 class="section-title mb-1">
+                            <i class="fa-solid fa-hospital ms-2"></i>
+                            اختيار العيادة
+                        </h5>
+
+                        <small class="text-muted">
+                            اختر العيادة لمتابعة الحجوزات والمواعيد الخاصة بها
+                        </small>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <select class="form-select clinic-select" id="clinicFilter">
+
+                            <option value="all">كل العيادات</option>
+
+                            <option value="masala">عيادة المسالة</option>
+
+                            <option value="october">عيادة 6 أكتوبر</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="row g-3 mt-2">
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <p>إجمالي الحجوزات</p>
+
+                        <h3 id="totalBookings">48</h3>
+
+                        <small class="text-success">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            حجوزات العيادتين
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+
+                        <p>الحجوزات المنتظرة</p>
+
+                        <h3 id="pendingBookings">08</h3>
+
+                        <small class="text-warning">
+                            تحتاج إلى تأكيد
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+
+                        <p>إجمالي المدفوعات</p>
+
+                        <h3 id="totalPayments">12,500</h3>
+
+                        <small class="text-muted">
+                            جنيه مصري
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-xl-3">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <p>عدد المرضى</p>
+
+                        <h3 id="totalPatintes">36</h3>
+
+                        <small class="text-muted">
+                            إجمالي المرضى
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bookings -->
+            <div class="content-card" id="bookings">
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+                    <h5 class="section-title">
+                        <i class="fa-solid fa-calendar-check ms-2"></i>
+                        أحدث الحجوزات
+                    </h5>
+
+                    <button class="btn btn-main btn-sm">
+                        <i class="fa-solid fa-plus ms-1"></i>
+                        إضافة حجز
+                    </button>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover text-center">
+
+                        <thead>
+
+                            <tr>
+                                <th>اسم المريض</th>
+                                <th>العيادة</th>
+                                <th>التاريخ</th>
+                                <th>الوقت</th>
+                                <th>حالة الحجز</th>
+                                <th>الإجراءات</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="bookingsTable">
+
+                            <tr>
+                                <td>محمد أحمد</td>
+                                <td>المسالة</td>
+                                <td>21/11/2026</td>
+                                <td>10:00 صباحاً</td>
+                                <td>
+                                    <span class="badge badge-confirmed">مؤكد</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        عرض
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>سارة محمود</td>
+                                <td>6 أكتوبر</td>
+                                <td>21/11/2026</td>
+                                <td>12:00 مساءً</td>
+                                <td>
+                                    <span class="badge badge-pending">في الانتظار</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-success">
+                                        تأكيد
+                                    </button>
+                                    <button class="btn btn-sm btn-danger">
+                                        إلغاء
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>عمر خالد</td>
+                                <td>المسالة</td>
+                                <td>22/11/2026</td>
+                                <td>04:00 مساءً</td>
+                                <td>
+                                    <span class="badge badge-confirmed">مؤكد</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        عرض
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>نور محمد</td>
+                                <td>6 أكتوبر</td>
+                                <td>22/11/2026</td>
+                                <td>06:00 مساءً</td>
+                                <td>
+                                    <span class="badge badge-cancelled">ملغي</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        عرض
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- Payments -->
+            <div class="content-card" id="payments">
+
+                <h5 class="section-title">
+                    <i class="fa-solid fa-money-bill-wave ms-2"></i>
+                    متابعة المدفوعات
+                </h5>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover text-center">
+
+                        <thead>
+
+                            <tr>
+                                <th>اسم المريض</th>
+                                <th>الخدمة</th>
+                                <th>المبلغ</th>
+                                <th>طريقة الدفع</th>
+                                <th>حالة الدفع</th>
+                                <th>الإجراء</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="paymentsTable">
+
+                            <tr>
+                                <td>محمد أحمد</td>
+                                <td>تنظيف الأسنان</td>
+                                <td>500 ج.م</td>
+                                <td>نقدي</td>
+                                <td>
+                                    <span class="badge badge-confirmed">تم الدفع</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        التفاصيل
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>سارة محمود</td>
+                                <td>حشو الأسنان</td>
+                                <td>800 ج.م</td>
+                                <td>تحويل إلكتروني</td>
+                                <td>
+                                    <span class="badge badge-pending">في انتظار التأكيد</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-success">
+                                        تأكيد الدفع
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>عمر خالد</td>
+                                <td>كشف طبي</td>
+                                <td>200 ج.م</td>
+                                <td>نقدي</td>
+                                <td>
+                                    <span class="badge badge-confirmed">تم الدفع</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        التفاصيل
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- Appointments -->
+            <div class="content-card" id="appointments">
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+                    <h5 class="section-title">
+                        <i class="fa-solid fa-clock ms-2"></i>
+                        جدول مواعيد العيادات
+                    </h5>
+
+                    <!-- <button class="btn btn-main btn-sm" id="showAppointment">
+                        <i class="fa-solid fa-plus ms-1"></i>
+                        إضافة موعد
+                    
+                    </button> -->
+
+                </div>
+
+                <div class="row">
+
+                    <!-- Clinic 1 -->
+                    <div class="col-md-6">
+
+                        <div class="content-card mt-0">
+
+                            <h6 class="fw-bold mb-3">
+                                <i class="fa-solid fa-hospital text-info ms-2"></i>
+                                عيادة المسالة
+                            </h6>
+
+                            <div class="schedule-item">
+
+                                <strong>السبت</strong>
+
+                                <p class="mb-1">من 10 صباحاً إلى 2 مساءً</p>
+
+                                <small class="text-muted">
+                                    عدد المواعيد: 8
+                                </small>
+
+                            </div>
+
+                            <div class="schedule-item">
+
+                                <strong>الإثنين</strong>
+
+                                <p class="mb-1">من 4 مساءً إلى 9 مساءً</p>
+
+                                <small class="text-muted">
+                                    عدد المواعيد: 10
+                                </small>
+
+                            </div>
+
+                            <div class="schedule-item">
+
+                                <strong>الأربعاء</strong>
+
+                                <p class="mb-1">من 10 صباحاً إلى 3 مساءً</p>
+
+                                <small class="text-muted">
+                                    عدد المواعيد: 7
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Clinic 2 -->
+                    <div class="col-md-6">
+
+                        <div class="content-card mt-0">
+
+                            <h6 class="fw-bold mb-3">
+                                <i class="fa-solid fa-hospital text-info ms-2"></i>
+                                عيادة 6 أكتوبر
+                            </h6>
+
+                            <div class="schedule-item">
+
+                                <strong>الأحد</strong>
+
+                                <p class="mb-1">من 10 صباحاً إلى 3 مساءً</p>
+
+                                <small class="text-muted">
+                                    عدد المواعيد: 9
+                                </small>
+
+                            </div>
+
+                            <div class="schedule-item">
+
+                                <strong>الثلاثاء</strong>
+
+                                <p class="mb-1">من 4 مساءً إلى 10 مساءً</p>
+
+                                <small class="text-muted">
+                                    عدد المواعيد: 12
+                                </small>
+
+                            </div>
+
+                            <div class="schedule-item">
+
+                                <strong>الخميس</strong>
+
+                                <p class="mb-1">من 10 صباحاً إلى 2 مساءً</p>
+
+                                <small class="text-muted">
+                                    عدد المواعيد: 6
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Patients -->
+            
+            <div class="content-card mt-3" id="addAppointmentForm">
+
+    <h5 class="section-title">إضافة موعد جديد</h5>
+
+    <form id="appointmentForm">
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <label class="form-label">اختر العيادة</label>
+                <select class="form-select" id="appointmentClinic" required>
+                    <option value="">اختر العيادة</option>
+                    <option value="المسالة">عيادة المسالة</option>
+                    <option value="6 أكتوبر">عيادة 6 أكتوبر</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">يوم العمل</label>
+                <select class="form-select" id="appointmentDay" required>
+                    <option value="">اختر اليوم</option>
+                    <option>السبت</option>
+                    <option>الأحد</option>
+                    <option>الإثنين</option>
+                    <option>الثلاثاء</option>
+                    <option>الأربعاء</option>
+                    <option>الخميس</option>
+                    <option>الجمعة</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">وقت البداية</label>
+                <input type="time" class="form-control"
+                       id="appointmentStart" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">وقت النهاية</label>
+                <input type="time" class="form-control"
+                       id="appointmentEnd" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">عدد المواعيد</label>
+                <input type="number" class="form-control"
+                       id="appointmentCount" min="1" required>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-main mt-4">
+            <i class="fa-solid fa-plus ms-1"></i>
+            إضافة الموعد
+        </button>
+
+    </form>
+
+</div>
+
+
+            <!-- Footer -->
+            <footer class="text-center text-muted mt-4 mb-3" id="footer">
+
+                <small>
+                    جميع الحقوق محفوظة © 2026 | نظام إدارة عيادات الأسنان
+                </small>
+
+            </footer>
+
+        </main>
+
+    </div>
+</div>
+
+<!-- نموذج إضافة موعد جديد -->
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/script.js"></script>
+
+</body>
+</html>
