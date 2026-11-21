@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدفع | ابتسامة</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./javascript/app.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <div class="nav-container">
+        <a href="appointment.html" class="brand">
+            <div class="brand-logo">
+                <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M18 10C10 13 10 24 15 34C18 40 18 52 24 54C29 56 29 43 33 43C37 43 37 56 43 54C49 52 48 40 51 34C56 24 54 13 46 10C40 7 36 12 32 12C27 12 23 7 18 10Z"
+                    stroke="#B9E4E8" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M22 23C26 26 38 26 42 23"
+                    stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <h2>ابتسامة/h2>
+             
+            </div>
+        </a>
+
+        <nav class="main-nav">
+            <a href="appointment.html" class="nav-link">حجز موعد</a>
+           
+            <a href="confirmation.html" class="nav-cancel">إلغاء الحجز</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="page-heading">
+        <h1>إتمام عملية الدفع</h1>
+    </section>
+
+    <div class="payment-layout">
+
+        <form id="paymentForm" class="form-box">
+            <h2>بيانات بطاقة Visa</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group full-width">
+                    <label for="cardName">اسم صاحب البطاقة</label>
+                    <input type="text" id="cardName"
+                           placeholder="الاسم كما يظهر على البطاقة" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="cardNumber">رقم البطاقة</label>
+                    <input type="text" id="cardNumber"
+                           placeholder="4xxxxxxxxxxxxxxx"
+                           inputmode="numeric" maxlength="16" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="expiry">تاريخ الانتهاء</label>
+                    <input type="text" id="expiry"
+                           placeholder="MM/YY" maxlength="5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="password" id="cvv"
+                           placeholder="123" inputmode="numeric"
+                           maxlength="3" required>
+                </div>
+
+            </div>
+
+            <div class="payment-warning">
+            </div>
+
+            <button type="submit" id="payButton">تأكيد الدفع</button>
+            <p id="paymentMessage" class="form-message"></p>
+        </form>
+
+        <aside class="summary-box">
+            <h2>ملخص الطلب</h2>
+
+            <p>اسم المريض <span id="paymentName">---</span></p>
+            <p>الخدمة <span id="paymentSpecialty">---</span></p>
+            <p>العيادة <span id="paymentClinic">---</span></p>
+            <p>التاريخ <span id="paymentDate">---</span></p>
+            <p>الوقت <span id="paymentTime">---</span></p>
+
+            <hr>
+
+            <h3>المبلغ المطلوب <span id="paymentTotal">0 جنيه</span></h3>
+        </aside>
+
+    </div>
+</main>
+
+<footer>
+    <p>جميع الحقوق محفوظة ©عيادة ابتسامة للأسنان</p>
+</footer>
+
+</body>
+</html>
