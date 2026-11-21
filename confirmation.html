@@ -1,38 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تأكيد الحجز | ابتسامة</title>
+
     <link rel="stylesheet" href="style.css">
-   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="header">
-    <div class="nav-container">
-        <a href="appointment.html" class="brand">
-            <div class="brand-logo">
-                <svg viewBox="0 0 64 64" fill="none">
-                    <path d="M18 10C10 13 10 24 15 34C18 40 18 52 24 54C29 56 29 43 33 43C37 43 37 56 43 54C49 52 48 40 51 34C56 24 54 13 46 10C40 7 36 12 32 12C27 12 23 7 18 10Z"
-                    stroke="#B9E4E8" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M22 23C26 26 38 26 42 23"
-                    stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <div class="brand-text">
-                <h2>ابتسامة</h2>
-            </div>
-        </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container">
 
-        <nav class="main-nav">
-            <a href="appointment.html" class="nav-link">حجز موعد</a>
-            
-            <a href="confirmation.html" class="nav-cancel">إلغاء الحجز</a>
-        </nav>
+        <a class="navbar-brand fw-bold" href="./index.html">ابتسامة</a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false"
+                aria-label="فتح القائمة">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto my-3 my-lg-0 gap-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">الصفحة الرئيسية</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html#services">الخدمات</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./LANDING%20wep.html#contact">اتصل بنا</a>
+                </li>
+            </ul>
+
+            <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2">
+                <a href="./profil%20user.html" class="btn btn-outline-primary rounded-3">
+                    <i class="fa-solid fa-user me-1"></i>
+                    الصفحة الشخصية
+                </a>
+
+                <a href="./appointment.html" class="btn btn-primary rounded-3">
+                    <i class="fa-solid fa-calendar-check me-1"></i>
+                    حجز موعد
+                </a>
+            </div>
+
+        </div>
     </div>
-</header>
+</nav>
 
 <main class="container">
 
@@ -43,10 +65,15 @@
 
     <section class="confirmation-card" id="confirmationCard">
 
-        <div class="confirmation-icon" id="confirmationIcon">✓</div>
+        <div class="confirmation-icon" id="confirmationIcon">
+            <i class="fa-solid fa-clipboard-check"></i>
+        </div>
 
-        <h1 id="confirmationTitle">تم الحجز بنجاح</h1>
-        <p id="confirmationSubtitle">تم تسجيل بيانات موعدك بنجاح</p>
+        <h1 id="confirmationTitle">تم تسجيل بيانات الحجز</h1>
+
+        <p id="confirmationSubtitle">
+            احتفظ برقم الحجز لحين مراجعة حالة الدفع
+        </p>
 
         <div class="booking-number">
             <p>رقم الحجز</p>
@@ -54,6 +81,7 @@
         </div>
 
         <div class="confirmation-details" id="confirmationDetails">
+
             <h2>بيانات الحجز</h2>
 
             <p>اسم المريض <span id="confirmName">---</span></p>
@@ -63,30 +91,43 @@
             <p>التاريخ <span id="confirmDate">---</span></p>
             <p>الوقت <span id="confirmTime">---</span></p>
             <p>السعر <span id="confirmPrice">---</span></p>
-            <p>الحالة <span id="confirmStatus">---</span></p>
+            <p>حالة الدفع <span id="confirmStatus">---</span></p>
+
         </div>
 
-        
+        <div class="payment-warning confirmation-warning">
+            <i class="fa-solid fa-circle-info me-1"></i>
+            ظهور هذه الصفحة لا يعني أن الدفع تم بنجاح. يجب مراجعة عملية الدفع من لوحة Paymob قبل اعتماد الحجز.
+        </div>
+
         <div class="confirmation-actions">
+
             <button type="button" class="cancel-btn" id="cancelBookingBtn">
-                إلغاء الحجز
+                حذف بيانات الحجز
             </button>
 
             <a href="appointment.html" class="new-booking-btn">
                 حجز موعد جديد
             </a>
+
+            <a href="payment.html" class="back-booking-link">
+                العودة إلى صفحة الدفع
+            </a>
+
         </div>
 
-        <p id="cancelMessage" class="form-message"></p>
+        <p id="cancelMessage" class="form-message" aria-live="polite"></p>
 
     </section>
 
 </main>
 
 <footer>
-    <p>جميع الحقوق محفوظة ©عيادة ابتسامة للأسنان</p>
+    <p>جميع الحقوق محفوظة © 2026 عيادة ابتسامة للأسنان</p>
 </footer>
 
- <script src="./javascript/app.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./javascript/app.js" defer></script>
+
 </body>
 </html>

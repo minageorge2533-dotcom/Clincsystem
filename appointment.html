@@ -5,33 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حجز موعد | ابتسامة</title>
+
     <link rel="stylesheet" href="style.css">
-   
+
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header class="header">
-    <div class="nav-container">
-        <a href="appointment.html" class="brand">
-            <div class="brand-logo">
-                <svg viewBox="0 0 64 64" fill="none">
-                    <path d="M18 10C10 13 10 24 15 34C18 40 18 52 24 54C29 56 29 43 33 43C37 43 37 56 43 54C49 52 48 40 51 34C56 24 54 13 46 10C40 7 36 12 32 12C27 12 23 7 18 10Z"
-                    stroke="#B9E4E8" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M22 23C26 26 38 26 42 23"
-                    stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <div class="brand-text">
-             <h2>ابتسامة</h2>
-            </div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold " href="./index.html">
+          
+            ابتسامة
         </a>
 
-        <nav class="main-nav">
-            <a href="appointment.html" class="nav-link">حجز موعد</a>
-            <a href="confirmation.html" class="nav-cancel">إلغاء الحجز</a>
-        </nav>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false"
+                aria-label="فتح القائمة">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto my-3 my-lg-0 gap-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="./index.html">
+                        الصفحة الرئيسية
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html#services">
+                        الخدمات
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./LANDING%20wep.html#contact">
+                        اتصل بنا
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2">
+                <a href="./profil%20user.html" class="btn btn-outline-primary rounded-3">
+                    <i class="fa-solid fa-user me-1"></i>
+                    الصفحة الشخصية
+                </a>
+
+                <a href="./appointment.html" class="btn btn-primary rounded-3 active">
+                    <i class="fa-solid fa-calendar-check me-1"></i>
+                    حجز موعد
+                </a>
+            </div>
+
+        </div>
     </div>
-</header>
+</nav>
 
 <main class="container">
     <section class="page-heading">
@@ -76,8 +114,8 @@
                     <label for="clinic">العيادة</label>
                     <select id="clinic" required>
                         <option value="">اختر العيادة</option>
-                        <option value="العيادة الرئيسية">  عيادة ميدان المسلة برج الاطباء</option>
-                        <option value="عيادة فرع المدينة">عيادة 6 اكتوبر بالفردوس </option>
+                        <option value="العيادة الرئيسية">عيادة ميدان المسلة برج الأطباء</option>
+                        <option value="عيادة فرع المدينة">عيادة 6 أكتوبر بالفردوس</option>
                     </select>
                 </div>
 
@@ -130,9 +168,11 @@
 </main>
 
 <footer>
-    <p>جميع الحقوق محفوظة 2026©عيادة ابتسامة للأسنان</p>
+    <p>جميع الحقوق محفوظة © 2026 عيادة ابتسامة للأسنان</p>
 </footer>
 
- <script src="./javascript/app.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./javascript/app.js" defer></script>
+
 </body>
 </html>
