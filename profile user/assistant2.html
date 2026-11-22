@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام إدارة عيادة الأسنان 2</title>
+
+    <!-- خط عربي احترافي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+       href="./boot/bootstrap.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap RTL -->
+    <link rel="stylesheet"href="./boot/bootstrap.css"/>
+
+    <!-- ملف التصميم -->
+    <link rel="stylesheet" href="./css/assistant.css" />
+  </head>
+
+  <body data-schedule="2">
+    <!-- مؤشر التحميل -->
+    <div id="loader">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+
+    <!-- مكان ظهور الرسائل (ثابت أعلى الصفحة) -->
+    <div id="messageBox" class="message-box"></div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- القائمة الجانبية -->
+        <div class="col-lg-2 sidebar p-0">
+          <div
+            class="offcanvas-lg offcanvas-start sidebar-panel"
+            tabindex="-1"
+            id="sidebarMenu"
+            aria-labelledby="sidebarTitle"
+          >
+            <div class="offcanvas-header d-lg-none">
+              <h5 class="offcanvas-title" id="sidebarTitle">عيادة الأسنان</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                data-bs-target="#sidebarMenu"
+                aria-label="إغلاق"
+              ></button>
+            </div>
+            <div class="offcanvas-body d-block p-3">
+              <h4 class="mb-4 d-none d-lg-block">عيادة الأسنان</h4>
+              <h6 class="mb-3">القائمة الرئيسية</h6>
+              <a href="#dashboard">الرئيسية</a>
+              <a href="#appointments">إدارة الحجوزات</a>
+              <a href="#addAppointment">إضافة حجز جديد</a>
+              <a href="#doctorSchedule">جدول عمل الدكتور</a>
+              <a href="#dailySchedule">جدول اليوم</a>
+              <a href="#dayOff">إدارة الإجازات</a>
+              <a href="#patients">إدارة المرضى</a>
+              <a href="#history">سجل الحجوزات</a>
+              <a href="#notifications"
+                >الإشعارات
+                <span
+                  class="badge bg-danger"
+                  id="unreadBadge"
+                  style="display: none"
+                  >0</span
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="col-lg-10 p-3 p-md-4">
+          <!-- زر القائمة للموبايل والتابلت -->
+          <div class="mobile-topbar d-lg-none mb-3">
+            <button
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sidebarMenu"
+              aria-controls="sidebarMenu"
+            >
+              ☰ القائمة
+            </button>
+          </div>
+
+          <!-- Header -->
+          <div
+            class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-4"
+          >
+            <div>
+              <h3>لوحة التحكم</h3>
+              <p class="text-secondary mb-0">
+                مرحباً بك في نظام إدارة عيادة الأسنان
+              </p>
+            </div>
+            <a href="#notifications" class="btn btn-primary"
+              >🔔 الإشعارات
+              <span class="badge bg-danger" id="headerUnread">0</span></a
+            >
+          </div>
+
+          <!-- ========== الرئيسية ========== -->
+          <section id="dashboard" class="section">
+            <h4 class="mb-3">نظرة عامة</h4>
+            <div class="row">
+              <div class="col-6 col-md-4 col-xl-2 mb-3">
+                <div class="card shadow-sm p-3 stat-card">
+                  <h6>إجمالي الحجوزات</h6>
+                  <h2 class="text-primary" id="statTotal">0</h2>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-xl-2 mb-3">
+                <div class="card shadow-sm p-3 stat-card">
+                  <h6>إجمالي المرضى</h6>
+                  <h2 class="text-success" id="statPatients">0</h2>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-xl-2 mb-3">
+                <div class="card shadow-sm p-3 stat-card">
+                  <h6>حجوزات اليوم</h6>
+                  <h2 class="text-warning" id="statToday">0</h2>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-xl-2 mb-3">
+                <div class="card shadow-sm p-3 stat-card">
+                  <h6>الحجوزات المؤكدة</h6>
+                  <h2 class="text-success" id="statConfirmed">0</h2>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-xl-2 mb-3">
+                <div class="card shadow-sm p-3 stat-card">
+                  <h6>الحجوزات الملغاة</h6>
+                  <h2 class="text-danger" id="statCancelled">0</h2>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-xl-2 mb-3">
+                <div class="card shadow-sm p-3 stat-card">
+                  <h6>الحجوزات القادمة</h6>
+                  <h2 class="text-primary" id="statUpcoming">0</h2>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mb-3">
+                <div class="card shadow-sm p-3 h-100">
+                  <h6 class="mb-3">الحجوزات القادمة</h6>
+                  <div id="upcomingList"></div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-3">
+                <div class="card shadow-sm p-3 h-100">
+                  <h6 class="mb-3">حجوزات اليوم</h6>
+                  <div id="todayList"></div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-3">
+                <div class="card shadow-sm p-3 h-100">
+                  <h6 class="mb-3">آخر النشاطات</h6>
+                  <div id="activitiesList"></div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-3">
+                <div class="card shadow-sm p-3 h-100">
+                  <h6 class="mb-3">آخر الإشعارات</h6>
+                  <div id="dashNotifList"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ========== إدارة الحجوزات ========== -->
+          <section id="appointments" class="section">
+            <h4 class="mb-3">إدارة الحجوزات</h4>
+            <div class="card shadow-sm p-3">
+              <div class="row g-2 mb-3">
+                <div class="col-12 col-md-4">
+                  <input
+                    type="search"
+                    class="form-control"
+                    id="appSearch"
+                    placeholder="ابحث بالاسم أو الهاتف أو العلاج..."
+                  />
+                </div>
+                <div class="col-6 col-md-2">
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="appFilterDate"
+                    title="فلترة بالتاريخ"
+                  />
+                </div>
+                <div class="col-6 col-md-2">
+                  <select class="form-select" id="appFilterStatus">
+                    <option value="">كل الحالات</option>
+                    <option value="مؤكد">مؤكد</option>
+                    <option value="قيد الانتظار">قيد الانتظار</option>
+                    <option value="مكتمل">مكتمل</option>
+                    <option value="ملغي">ملغي</option>
+                  </select>
+                </div>
+                <div class="col-6 col-md-2">
+                  <select class="form-select" id="appSort">
+                    <option value="asc">الأقدم أولاً</option>
+                    <option value="desc">الأحدث أولاً</option>
+                  </select>
+                </div>
+                <div class="col-6 col-md-2">
+                  <button
+                    class="btn btn-secondary w-100"
+                    type="button"
+                    id="appResetBtn"
+                  >
+                    مسح الفلاتر
+                  </button>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>المريض</th>
+                      <th>التاريخ</th>
+                      <th>الوقت</th>
+                      <th>العلاج</th>
+                      <th>الحالة</th>
+                      <th>الإجراءات</th>
+                    </tr>
+                  </thead>
+                  <tbody id="appointmentsTable"></tbody>
+                </table>
+              </div>
+              <div id="appointmentsPager"></div>
+            </div>
+          </section>
+
+          <!-- ========== إضافة حجز ========== -->
+          <section id="addAppointment" class="section">
+            <h4 class="mb-3" id="appointmentFormTitle">إضافة حجز جديد</h4>
+            <div class="card shadow-sm p-4" id="appointmentForm">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">اسم المريض *</label
+                  ><input
+                    type="text"
+                    class="form-control"
+                    id="patientName"
+                    placeholder="أدخل اسم المريض"
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">رقم الهاتف *</label
+                  ><input
+                    type="tel"
+                    class="form-control"
+                    id="patientPhone"
+                    placeholder="مثال: 01012345678"
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">تاريخ الحجز *</label
+                  ><input
+                    type="date"
+                    class="form-control"
+                    id="appointmentDate"
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label"
+                    >وقت الحجز * (المواعيد المتاحة فقط)</label
+                  ><select class="form-select" id="appointmentTime" disabled>
+                    <option value="">اختر التاريخ أولاً</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">نوع العلاج *</label>
+                  <select class="form-select" id="treatment">
+                    <option value="">اختر نوع العلاج</option>
+                    <option value="تنظيف الأسنان">تنظيف الأسنان</option>
+                    <option value="تبييض الأسنان">تبييض الأسنان</option>
+                    <option value="زراعة الأسنان">زراعة الأسنان</option>
+                    <option value="علاج العصب">علاج العصب</option>
+                    <option value="كشف طبي">كشف طبي</option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">حالة الحجز</label>
+                  <select class="form-select" id="appointmentStatus">
+                    <option value="مؤكد">مؤكد</option>
+                    <option value="قيد الانتظار">قيد الانتظار</option>
+                    <option value="مكتمل">مكتمل</option>
+                  </select>
+                </div>
+                <div class="col-12 mb-3">
+                  <label class="form-label">ملاحظات (اختياري)</label
+                  ><textarea
+                    class="form-control"
+                    id="appointmentNotes"
+                    rows="2"
+                    placeholder="أي ملاحظات إضافية"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  id="addAppointmentBtn"
+                >
+                  إضافة الحجز
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  id="cancelEditBtn"
+                  style="display: none"
+                >
+                  إلغاء التعديل
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ========== جدول عمل الدكتور ========== -->
+          <section id="doctorSchedule" class="section">
+            <h4 class="mb-3">جدول عمل الدكتور</h4>
+            <div class="card shadow-sm p-3" id="scheduleForm">
+              <div class="table-responsive">
+                <table class="table align-middle">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>اليوم</th>
+                      <th>من</th>
+                      <th>إلى</th>
+                    </tr>
+                  </thead>
+                  <tbody id="scheduleBody"></tbody>
+                </table>
+              </div>
+              <div class="row align-items-end mb-3">
+                <div class="col-md-4">
+                  <label class="form-label">مدة الكشف</label>
+                  <select class="form-select" id="scheduleDuration">
+                    <option value="15">15 دقيقة</option>
+                    <option value="20">20 دقيقة</option>
+                    <option value="30">30 دقيقة</option>
+                    <option value="45">45 دقيقة</option>
+                    <option value="60">60 دقيقة</option>
+                  </select>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="saveScheduleBtn"
+                  >
+                    حفظ الجدول
+                  </button>
+                </div>
+              </div>
+              <hr />
+              <h6 class="mb-3">فترات الاستراحة (تُطبّق على كل أيام العمل)</h6>
+              <div class="row g-2 mb-3" id="breakForm">
+                <div class="col-5 col-md-3">
+                  <input type="time" class="form-control" id="breakStart" />
+                </div>
+                <div class="col-5 col-md-3">
+                  <input type="time" class="form-control" id="breakEnd" />
+                </div>
+                <div class="col-2 col-md-3">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    id="addBreakBtn"
+                  >
+                    إضافة
+                  </button>
+                </div>
+              </div>
+              <div id="breaksList"></div>
+            </div>
+          </section>
+
+          <!-- ========== جدول اليوم ========== -->
+          <section id="dailySchedule" class="section">
+            <h4 class="mb-3">جدول المواعيد اليومي</h4>
+            <div class="card shadow-sm p-3">
+              <div class="row mb-3">
+                <div class="col-md-4">
+                  <label class="form-label">اختر اليوم</label
+                  ><input type="date" class="form-control" id="dailyDate" />
+                </div>
+              </div>
+              <div id="dailyScheduleList"></div>
+            </div>
+          </section>
+
+          <!-- ========== الإجازات ========== -->
+          <section id="dayOff" class="section">
+            <h4 class="mb-3" id="holidayFormTitle">إدارة الإجازات</h4>
+            <div class="card shadow-sm p-4 mb-3" id="holidayForm">
+              <div class="mb-3">
+                <label class="form-label">يوم الإجازة *</label
+                ><input type="date" class="form-control" id="dayOffDate" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">سبب الإجازة *</label
+                ><textarea
+                  class="form-control"
+                  id="dayOffReason"
+                  rows="2"
+                  placeholder="اكتب سبب الإجازة"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">رسالة للمرضى المتأثرين</label
+                ><textarea
+                  class="form-control"
+                  id="patientMessage"
+                  rows="2"
+                  placeholder="اكتب رسالة للمرضى"
+                ></textarea>
+              </div>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-danger" type="button" id="closeDayBtn">
+                  إغلاق اليوم وإبلاغ المرضى
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  id="cancelHolidayEditBtn"
+                  style="display: none"
+                >
+                  إلغاء التعديل
+                </button>
+              </div>
+            </div>
+            <div class="card shadow-sm p-3">
+              <h6 class="mb-3">الإجازات المسجلة</h6>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>التاريخ</th>
+                      <th>اليوم</th>
+                      <th>السبب</th>
+                      <th>الإجراءات</th>
+                    </tr>
+                  </thead>
+                  <tbody id="holidaysTable"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- ========== المرضى ========== -->
+          <section id="patients" class="section">
+            <h4 class="mb-3">إدارة المرضى</h4>
+            <div class="card shadow-sm p-3">
+              <div class="row g-2 mb-3">
+                <div class="col-md-8">
+                  <input
+                    type="search"
+                    class="form-control"
+                    id="patientSearch"
+                    placeholder="ابحث بالاسم أو رقم الهاتف..."
+                  />
+                </div>
+                <div class="col-md-4">
+                  <button
+                    class="btn btn-primary w-100"
+                    type="button"
+                    id="addPatientBtn"
+                  >
+                    + إضافة مريض
+                  </button>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>اسم المريض</th>
+                      <th>رقم الهاتف</th>
+                      <th>آخر زيارة</th>
+                      <th>عدد الحجوزات</th>
+                      <th>الإجراءات</th>
+                    </tr>
+                  </thead>
+                  <tbody id="patientsTable"></tbody>
+                </table>
+              </div>
+              <div id="patientsPager"></div>
+            </div>
+          </section>
+
+          <!-- ========== السجل ========== -->
+          <section id="history" class="section">
+            <h4 class="mb-3">سجل الحجوزات السابقة</h4>
+            <div class="card shadow-sm p-3">
+              <div class="row g-2 mb-3">
+                <div class="col-12 col-md-4">
+                  <input
+                    type="search"
+                    class="form-control"
+                    id="hSearch"
+                    placeholder="ابحث في السجل..."
+                  />
+                </div>
+                <div class="col-6 col-md-3">
+                  <input type="date" class="form-control" id="hDate" />
+                </div>
+                <div class="col-6 col-md-3">
+                  <select class="form-select" id="hStatus">
+                    <option value="">كل الحالات</option>
+                    <option value="ملغي">ملغي</option>
+                    <option value="مكتمل">مكتمل</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-2">
+                  <button
+                    class="btn btn-secondary w-100"
+                    type="button"
+                    id="hResetBtn"
+                  >
+                    مسح الفلاتر
+                  </button>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>المريض</th>
+                      <th>التاريخ</th>
+                      <th>الوقت</th>
+                      <th>العلاج</th>
+                      <th>الحالة</th>
+                      <th>تفاصيل</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historyTable"></tbody>
+                </table>
+              </div>
+              <div id="historyPager"></div>
+            </div>
+          </section>
+
+          <!-- ========== الإشعارات ========== -->
+          <section id="notifications" class="section">
+            <h4 class="mb-3">إشعارات الحجوزات</h4>
+            <div class="card shadow-sm p-3">
+              <div
+                class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-3"
+              >
+                <span>غير المقروءة: <strong id="unreadCount">0</strong></span>
+                <button
+                  class="btn btn-sm btn-primary"
+                  type="button"
+                  id="markAllReadBtn"
+                >
+                  تحديد الكل كمقروء
+                </button>
+              </div>
+              <div id="notificationsList"></div>
+            </div>
+          </section>
+
+          <footer class="text-center mt-5">
+            <p>جميع الحقوق محفوظة © 2026 نظام إدارة عيادة الأسنان</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة التأكيد -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmTitle"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="إغلاق"
+            ></button>
+          </div>
+          <div class="modal-body" id="confirmText"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="confirmOkBtn">
+              تأكيد</button
+            ><button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              تراجع
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة التفاصيل -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+      <div
+        class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="detailsTitle"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="إغلاق"
+            ></button>
+          </div>
+          <div class="modal-body" id="detailsBody"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              إغلاق
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة إضافة / تعديل مريض -->
+    <div class="modal fade" id="patientModal" tabindex="-1" aria-hidden="true">
+      <div
+        class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="patientModalTitle">إضافة مريض</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="إغلاق"
+            ></button>
+          </div>
+          <div class="modal-body" id="patientForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">الاسم الكامل *</label
+                ><input type="text" class="form-control" id="pName" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">رقم الهاتف *</label
+                ><input type="tel" class="form-control" id="pPhone" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">البريد الإلكتروني</label
+                ><input type="email" class="form-control" id="pEmail" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">تاريخ الميلاد</label
+                ><input type="date" class="form-control" id="pDob" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">النوع</label
+                ><select class="form-select" id="pGender">
+                  <option value="">غير محدد</option>
+                  <option value="ذكر">ذكر</option>
+                  <option value="أنثى">أنثى</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">العنوان</label
+                ><input type="text" class="form-control" id="pAddress" />
+              </div>
+              <div class="col-12 mb-3">
+                <label class="form-label">ملاحظات طبية</label
+                ><textarea class="form-control" id="pNotes" rows="2"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="savePatientBtn">
+              حفظ</button
+            ><button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              إلغاء
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/assistant.js"></script>
+  </body>
+</html>

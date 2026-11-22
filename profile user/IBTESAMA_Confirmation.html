@@ -1,0 +1,231 @@
+<!-- بعد التعديل -->
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تأكيد الحجز - ابتسامة لطب الأسنان</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="./boot/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/IBTESAMA_Style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <i class="fa-solid fa-tooth me-2"></i>
+            ابتسامة
+        </a>
+
+        <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto flex-row gap-4">
+
+                <li class="nav-item">
+                    <a class="nav-link active fw-semibold text-primary" href="./LANDING wep.html">
+                        الصفحة الرئيسية
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./LANDING wep.html#services">الخدمات</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./LANDING wep.html#contact">اتصل بنا</a>
+                </li>
+
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+
+                <a href="./profil user.html" class="btn btn-outline-primary rounded-3">
+                    <i class="fa-solid fa-user me-1"></i>
+                    الصفحة الشخصية
+                </a>
+
+                <a href="./IBTESAMA_Appointment.html" class="btn btn-primary rounded-3">
+                    <i class="fa-solid fa-calendar-check me-1"></i>
+                    حجز موعد
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main class="container py-5">
+  <div class="confirmation-page card p-4 p-md-5 mx-auto">
+
+    <div class="text-center mb-4">
+      <h1 class="section-title">نتيجة الحجز</h1>
+      <p>تفاصيل الحجز ونتيجة عملية الدفع.</p>
+    </div>
+
+    <div id="confirmationDetails">
+
+      <div class="confirmation-code text-center mb-4">
+        <span>رقم الحجز</span>
+        <h2 id="confirmCode">—</h2>
+      </div>
+
+      <div class="payment-status pending mb-3" id="confirmationStatus">
+        في انتظار مراجعة الدفع
+      </div>
+
+      <div class="confirmation-warning mb-3" id="confirmationWarning">
+        حالة الدفع لم يتم التحقق منها بعد.
+      </div>
+
+      <div class="confirmation-data">
+
+        <div class="summary-row">
+          <span>اسم المريض</span>
+          <strong id="confirmName">—</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>رقم الهاتف</span>
+          <strong id="confirmPhone">—</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>الخدمة</span>
+          <strong id="confirmSpecialty">—</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>الفرع</span>
+          <strong id="confirmClinic">—</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>التاريخ</span>
+          <strong id="confirmDate">—</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>الوقت</span>
+          <strong id="confirmTime">—</strong>
+        </div>
+
+        <div class="summary-row total-row">
+          <span>المبلغ</span>
+          <strong id="confirmPrice">—</strong>
+        </div>
+
+      </div>
+
+      <!-- رسالة حالة الإلغاء -->
+      <div id="cancellationStatusBox" class="cancellation-status-box mt-4" hidden>
+        <strong id="cancellationStatusTitle"></strong>
+        <p id="cancellationStatusText" class="mb-0 mt-2"></p>
+      </div>
+
+      <div class="d-grid gap-3 mt-4">
+
+        <button
+          type="button"
+          id="cancelBookingBtn"
+          class="btn btn-outline-danger">
+          <i class="fa-solid fa-calendar-xmark"></i>
+          إلغاء الحجز وطلب استرداد المبلغ
+        </button>
+
+        <button
+          type="button"
+          id="retryPaymentBtn"
+          class="btn btn-primary">
+          العودة إلى صفحة الدفع
+        </button>
+
+        <a href="IBTESAMA_Appointment.html" class="btn btn-success">
+          حجز موعد جديد
+        </a>
+
+        <button
+          type="button"
+          id="clearBookingBtn"
+          class="btn btn-outline-secondary">
+          حذف بيانات الحجز من هذا المتصفح
+        </button>
+
+        <a href="index.html" class="btn btn-outline-secondary">
+          العودة إلى الرئيسية
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- نافذة تأكيد الإلغاء داخل الموقع -->
+<div id="cancelBookingModal" class="cancel-modal" hidden>
+  <div class="cancel-modal-backdrop" data-close-cancel-modal></div>
+
+  <div
+    class="cancel-modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cancelModalTitle">
+
+    <div class="cancel-modal-icon">
+      <i class="fa-solid fa-calendar-xmark"></i>
+    </div>
+
+    <h3 id="cancelModalTitle">تأكيد إلغاء الحجز</h3>
+
+    <p>
+      هل أنت متأكد أنك تريد إلغاء هذا الحجز؟
+    </p>
+
+    <div class="cancel-modal-summary">
+      <div>
+        <span>رقم الحجز</span>
+        <strong id="cancelModalBookingCode">—</strong>
+      </div>
+
+      <div>
+        <span>المبلغ</span>
+        <strong id="cancelModalAmount">—</strong>
+      </div>
+    </div>
+
+    <div class="cancel-modal-note">
+      سيتم تسجيل طلب الإلغاء. إذا كان الدفع حقيقيًا، فستراجع العيادة
+      عملية الدفع وتنفذ الاسترداد يدويًا عند استحقاقه.
+    </div>
+
+    <div class="d-flex gap-2 mt-4">
+      
+
+      <button type="button" id="closeCancelModalBtn" class="btn btn-outline-secondary flex-fill">
+        الرجوع
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+<script src="./js/IBTESAMA_App.js"></script>
+</body>
+</html>

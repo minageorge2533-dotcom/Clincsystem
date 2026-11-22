@@ -1,0 +1,403 @@
+
+/* ==================================
+   1. الألوان الرئيسية
+================================== */
+
+:root {
+    --dark: #071B2B;
+    --primary: #167D8D;
+    --light: #B9E4E8;
+    --background: #EEEEEE;
+}
+
+
+/* ==================================
+   2. إعدادات الصفحة
+================================== */
+
+body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    background-color: var(--background);
+    color: var(--dark);
+}
+
+
+/* ==================================
+   3. القائمة الجانبية
+================================== */
+
+.sidebar {
+    background-color: var(--dark);
+}
+
+/* لوحة القائمة (تتحول لقائمة منزلقة على الموبايل) */
+.sidebar-panel {
+    --bs-offcanvas-width: 270px;
+    background-color: var(--dark);
+    color: white;
+}
+
+.sidebar-panel .offcanvas-title {
+    color: var(--light);
+}
+
+.sidebar h4 {
+    color: var(--light);
+}
+
+.sidebar h6 {
+    color: var(--light);
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+
+/* ==================================
+   4. العناوين
+================================== */
+
+h3, h4 {
+    color: var(--dark);
+}
+
+
+/* ==================================
+   5. الكروت
+================================== */
+
+.card {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+
+/* ==================================
+   6. الأزرار
+================================== */
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--dark);
+    border-color: var(--dark);
+}
+
+.btn-warning {
+    background-color: var(--light);
+    border-color: var(--light);
+    color: var(--dark);
+}
+
+.btn-warning:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+
+/* ==================================
+   7. الجداول
+================================== */
+
+.table-primary {
+    --bs-table-bg: var(--light);
+    --bs-table-color: var(--dark);
+}
+
+
+/* ==================================
+   8. حقول الإدخال
+================================== */
+
+.form-control,
+.form-select {
+    border: 1px solid var(--light);
+    border-radius: 6px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+
+    box-shadow: 0 0 0 0.2rem
+    rgba(22, 125, 141, 0.2);
+}
+
+
+/* ==================================
+   9. الأقسام
+================================== */
+
+.section {
+    margin-bottom: 40px;
+}
+
+
+/* ==================================
+   10. الرسائل داخل الموقع
+================================== */
+
+.message-box {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    width: max-content;
+    max-width: 92%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.message-success {
+    background-color: var(--light);
+    color: var(--dark);
+    border: 1px solid var(--primary);
+}
+
+.message-error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+.message-info {
+    background-color: var(--light);
+    color: var(--dark);
+    border: 1px solid var(--primary);
+}
+
+
+/* ==================================
+   11. الإشعارات
+================================== */
+
+.notification {
+    background-color: var(--light);
+    color: var(--dark);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+
+/* ==================================
+   12. Footer
+================================== */
+
+footer {
+    color: var(--dark);
+}
+
+
+/* ==================================
+   13. Responsive
+================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* منع التمرير الأفقي */
+body {
+    overflow-x: hidden;
+}
+
+/* شريط زر القائمة (موبايل وتابلت) */
+.mobile-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background-color: var(--background);
+    padding: 8px 0;
+}
+
+/* الأقسام لا تختفي تحت الشريط العلوي */
+.section {
+    scroll-margin-top: 70px;
+}
+
+/* الجداول: ما تتكسرش الكلمات وتسكرول أفقياً داخل الكارد */
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+.table-responsive .table {
+    min-width: 520px;
+}
+
+.table td .btn {
+    margin: 2px;
+    white-space: nowrap;
+}
+
+/* الشاشات الكبيرة: القائمة ثابتة */
+@media (min-width: 992px) {
+
+    .sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        align-self: flex-start;
+    }
+
+    .section {
+        scroll-margin-top: 20px;
+    }
+}
+
+/* تابلت وأصغر */
+@media (max-width: 991.98px) {
+
+    .sidebar {
+        height: 0;
+        min-height: 0;
+    }
+
+    .sidebar a {
+        padding: 12px;
+    }
+}
+
+/* موبايل */
+@media (max-width: 767.98px) {
+
+    h3 {
+        font-size: 1.35rem;
+    }
+
+    h4 {
+        font-size: 1.15rem;
+    }
+
+    .card.p-4 {
+        padding: 1rem !important;
+    }
+
+    .card h2 {
+        font-size: 1.6rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .section {
+        margin-bottom: 28px;
+    }
+
+    /* أزرار الفورم تاخد العرض كامل */
+    .d-flex.gap-2 > .btn {
+        flex: 1;
+    }
+
+    #closeDayBtn {
+        width: 100%;
+    }
+}
+
+/* موبايل صغير جداً */
+@media (max-width: 400px) {
+
+    .table-responsive .table {
+        min-width: 460px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ==================================
+   14. عناصر النظام الديناميكي
+================================== */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    background: var(--background);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card h6 {
+    color: #5b6b76;
+    font-size: 0.85rem;
+}
+
+.stat-card h2 {
+    margin-bottom: 0;
+}
+
+.list-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light);
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.empty-state {
+    text-align: center;
+    color: #6c7a84;
+    padding: 18px 8px;
+}
+
+.notification.unread {
+    border-right: 4px solid var(--primary);
+    font-weight: 600;
+}
+
+.sidebar a .badge {
+    margin-right: 6px;
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-link {
+    color: var(--primary);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
