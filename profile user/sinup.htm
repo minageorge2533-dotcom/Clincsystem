@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>إنشاء حساب | عيادة ابتسامة</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+  <main class="page">
+    <section class="login-box">
+
+      <header class="login-header">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/>
+            <path d="M12 8.5v6M9 11.5h6"/>
+          </svg>
+        </div>
+        <p class="clinic-name">عيادة ابتسامة</p>
+        <h1>إنشاء حساب جديد</h1>
+        <p class="subtitle">أدخل بياناتك للانضمام إلى نظام العيادة</p>
+      </header>
+
+      <form id="signupForm" novalidate>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fullName">الاسم بالكامل</label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M4 21a8 8 0 0 1 16 0"/>
+                </svg>
+              </span>
+              <input type="text" id="fullName" name="fullName" placeholder="الاسم الثلاثي" autocomplete="name">
+            </div>
+            <p class="field-error" id="fullNameError" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">رقم الموبايل</label>
+            <div class="input-wrap">
+              <span class="input-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="7" y="2" width="10" height="20" rx="2"/>
+                  <path d="M11 18h2"/>
+                </svg>
+              </span>
+              <input type="tel" id="phone" name="phone" placeholder="01XXXXXXXXX" inputmode="numeric" autocomplete="tel" dir="ltr" style="text-align:right">
+            </div>
+            <p class="field-error" id="phoneError" role="alert"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">البريد الإلكتروني</label>
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="M3 7l9 6 9-6"/>
+              </svg>
+            </span>
+            <input type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" dir="ltr" style="text-align:right">
+          </div>
+          <p class="field-error" id="emailError" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="password">كلمة المرور</label>
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="11" width="14" height="10" rx="2"/>
+                <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+              </svg>
+            </span>
+            <input type="password" id="password" name="password" placeholder="8 أحرف على الأقل" autocomplete="new-password">
+
+            <button type="button" class="toggle-password" data-target="password" aria-label="إظهار كلمة المرور" aria-pressed="false">
+              <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M3 3l18 18"/>
+              </svg>
+            </button>
+          </div>
+          <p class="field-error" id="passwordError" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">تأكيد كلمة المرور</label>
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="11" width="14" height="10" rx="2"/>
+                <path d="M8 11V8a4 4 0 0 1 8 0v3"/>
+              </svg>
+            </span>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="أعد كتابة كلمة المرور" autocomplete="new-password">
+
+            <button type="button" class="toggle-password" data-target="confirmPassword" aria-label="إظهار كلمة المرور" aria-pressed="false">
+              <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M3 3l18 18"/>
+              </svg>
+            </button>
+          </div>
+          <p class="field-error" id="confirmPasswordError" role="alert"></p>
+        </div>
+
+        <div class="field terms">
+          <label class="remember">
+            <input type="checkbox" id="terms" name="terms">
+            <span>أوافق على الشروط والأحكام وسياسة الخصوصية</span>
+          </label>
+          <p class="field-error" id="termsError" role="alert"></p>
+        </div>
+
+        <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+
+        <button type="submit" class="submit-btn" href="/profil .html">إنشاء الحساب</button>
+      </form>
+
+      <p class="switch-text">
+        لديك حساب بالفعل؟
+        <a href="./login.html" class="switch-link">تسجيل الدخول</a>
+      </p>
+
+    </section>
+  </main>
+
+  <script src="./js/singup.js"></script>
+</body>
+
+</html>

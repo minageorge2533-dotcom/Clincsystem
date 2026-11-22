@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>لوحة تحكم الطبيب</title>
+
+      <link rel="stylesheet" href="./boot/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --main-color: #071B2B;
+            --second-color: #167D8D;
+            --light-color: #f4f7f9;
+        }
+
+        body { background: var(--light-color); font-family: Arial, sans-serif; color: #333; }
+
+        /* Sidebar */
+        .sidebar { background: var(--main-color); min-height: 100vh; padding: 25px 15px; color: white; }
+        .brand { text-align: center; padding: 15px 0 30px; border-bottom: 1px solid #ffffff20; }
+        .brand i { font-size: 35px; color: #32b5c2; }
+        .brand h5 { margin-top: 12px; font-weight: bold; }
+        .sidebar a { display: block; color: #cbd5df; text-decoration: none; padding: 13px 15px; margin: 7px 0; border-radius: 8px; transition: 0.3s; }
+        .sidebar a:hover, .sidebar a.active { background: var(--second-color); color: white; }
+        .sidebar a i { margin-left: 10px; width: 20px; }
+
+        /* Main */
+        .main-content { padding: 25px; }
+        .topbar { background: white; padding: 18px 25px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; box-shadow: 0 2px 10px #00000008; }
+        .doctor-info { display: flex; align-items: center; gap: 12px; }
+        .doctor-icon { width: 45px; height: 45px; background: #e0f2f3; color: var(--second-color); display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 20px; }
+
+        /* Stats */
+        .stat-card { background: white; padding: 22px; border-radius: 12px; box-shadow: 0 2px 10px #00000008; height: 100%; }
+        .stat-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #e0f2f3; color: var(--second-color); border-radius: 10px; font-size: 21px; margin-bottom: 15px; }
+        .stat-card h3 { font-weight: bold; color: var(--main-color); }
+        .stat-card p { color: #888; margin-bottom: 8px; }
+
+        /* Sections */
+        .content-card { background: white; padding: 22px; border-radius: 12px; margin-top: 25px; box-shadow: 0 2px 10px #00000008; }
+        .section-title { color: var(--main-color); font-weight: bold; margin-bottom: 20px; }
+        .btn-main { background: var(--second-color); color: white; border: none; }
+        .btn-main:hover { background: var(--main-color); color: white; }
+        .clinic-select { border: 1px solid #ddd; border-radius: 8px; padding: 10px; }
+
+        .table th { background: #f4f7f9; color: var(--main-color); white-space: nowrap; }
+        .table td { vertical-align: middle; white-space: nowrap; }
+
+        .badge-confirmed { background: #d1f3e0; color: #16834b; }
+        .badge-pending { background: #fff0cc; color: #a66c00; }
+        .badge-cancelled { background: #ffe0e0; color: #c0392b; }
+        .badge-done { background: #dbe8ff; color: #1d4ed8; }
+
+        .schedule-item { padding: 12px 15px; border-right: 4px solid var(--second-color); background: #f5f9fa; border-radius: 7px; margin-bottom: 10px; }
+        .schedule-item strong { color: var(--main-color); }
+
+        .empty-state { text-align: center; color: #888; padding: 25px 10px; }
+
+        #messageBox { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); z-index: 2000; min-width: 260px; text-align: center; display: none; box-shadow: 0 4px 14px #00000030; }
+
+        @media (max-width: 991px) {
+            .sidebar { min-height: auto; }
+            .sidebar nav { display: flex; flex-wrap: wrap; }
+            .sidebar a { font-size: 13px; padding: 10px; }
+        }
+        @media (max-width: 767px) {
+            .main-content { padding: 15px; }
+            .topbar { flex-direction: column; align-items: flex-start; gap: 15px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="messageBox" class="alert"></div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-lg-2 sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-tooth"></i>
+                <h5>عيادة الأسنان</h5>
+                <small>لوحة تحكم الطبيب</small>
+            </div>
+
+            <nav class="mt-4">
+                <a href="#home" class="active"><i class="fa-solid fa-house"></i>الرئيسية</a>
+                <a href="#clinicsStats"><i class="fa-solid fa-hospital"></i>العيادات</a>
+                <a href="#bookings"><i class="fa-solid fa-calendar-check"></i>الحجوزات</a>
+                <a href="#payments"><i class="fa-solid fa-money-bill-wave"></i>المدفوعات</a>
+                <a href="#appointments"><i class="fa-solid fa-clock"></i>المواعيد</a>
+                <a href="#patients"><i class="fa-solid fa-users"></i>المرضى</a>
+                <a href="Profile.html"><i class="fa-solid fa-user-doctor"></i>الملف الشخصي</a>
+                <a href="Login.html"><i class="fa-solid fa-right-from-bracket"></i>تسجيل الخروج</a>
+            </nav>
+        </aside>
+
+
+        <main class="col-lg-10 main-content">
+
+            <!-- Topbar -->
+            <div class="topbar" id="home">
+                <div>
+                    <h5 class="fw-bold mb-1">لوحة التحكم</h5>
+                    <small class="text-muted">مرحباً بك دكتور، نتمنى لك يوماً موفقاً</small>
+                </div>
+                <div class="doctor-info">
+                    <div class="text-start">
+                        <strong>د. أحمد محمد</strong><br>
+                        <small class="text-muted">طبيب أسنان</small>
+                    </div>
+                    <div class="doctor-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                </div>
+            </div>
+
+            <!-- Clinic filter -->
+            <div class="content-card mt-0">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <h5 class="section-title mb-1">
+                            <i class="fa-solid fa-hospital ms-2"></i>اختيار العيادة
+                        </h5>
+                        <small class="text-muted">الفلتر بيأثر على الإحصائيات والحجوزات والمدفوعات والمرضى</small>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-select clinic-select" id="clinicFilter">
+                            <option value="all">كل العيادات</option>
+                            <option value="العيادة الرئيسية">عيادة ميدان المسلة</option>
+                            <option value="عيادة فرع المدينة">عيادة 6 أكتوبر</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="row g-3 mt-2">
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <p>إجمالي الحجوزات</p>
+                        <h3 id="statTotal">0</h3>
+                        <small class="text-muted">منها <span id="statCancelled">0</span> ملغي</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-user-check"></i></div>
+                        <p>أكدها المساعد</p>
+                        <h3 id="statConfirmed">0</h3>
+                        <small class="text-success">حجوزات مؤكدة</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <p>في الانتظار (لم تؤكد)</p>
+                        <h3 id="statPending">0</h3>
+                        <small class="text-warning">تحتاج إلى تأكيد</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <p>الحجوزات المكتملة</p>
+                        <h3 id="statDone">0</h3>
+                        <small class="text-muted">تم الكشف</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <p>الدخل المحصّل</p>
+                        <h3 id="statIncome">0</h3>
+                        <small class="text-muted">جنيه مصري (مدفوع فعلاً)</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <p>دخل متوقع (غير مدفوع)</p>
+                        <h3 id="statExpected">0</h3>
+                        <small class="text-muted">جنيه مصري</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                        <p>مبالغ تحتاج استرداد</p>
+                        <h3 id="statRefund">0</h3>
+                        <small class="text-muted">جنيه (حجوزات مدفوعة وملغية)</small>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-xl-3">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                        <p>عدد المرضى</p>
+                        <h3 id="statPatients">0</h3>
+                        <small class="text-muted">إجمالي المرضى</small>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Per clinic -->
+            <div class="content-card" id="clinicsStats">
+                <h5 class="section-title">
+                    <i class="fa-solid fa-hospital ms-2"></i>تفاصيل كل عيادة
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>العيادة</th>
+                                <th>إجمالي الحجوزات</th>
+                                <th>في الانتظار</th>
+                                <th>مؤكدة</th>
+                                <th>مكتملة</th>
+                                <th>ملغية</th>
+                                <th>الدخل المحصّل</th>
+                                <th>الدخل المتوقع</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clinicsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- Bookings -->
+            <div class="content-card" id="bookings">
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <h5 class="section-title">
+                        <i class="fa-solid fa-calendar-check ms-2"></i>كل الحجوزات
+                    </h5>
+                    <button class="btn btn-main btn-sm" id="addBookingBtn">
+                        <i class="fa-solid fa-plus ms-1"></i>إضافة حجز
+                    </button>
+                </div>
+
+                <div class="row g-2 mb-3">
+                    <div class="col-md-5">
+                        <input type="search" class="form-control" id="searchInput" placeholder="بحث بالاسم أو الهاتف أو كود الحجز">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="statusFilter">
+                            <option value="">كل الحالات</option>
+                            <option value="قيد الانتظار">في الانتظار</option>
+                            <option value="مؤكد">مؤكد</option>
+                            <option value="مكتمل">مكتمل</option>
+                            <option value="ملغي">ملغي</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" class="form-control" id="dateFilter">
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-outline-secondary w-100" id="resetFilters" title="مسح الفلاتر">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>اسم المريض</th>
+                                <th>العيادة</th>
+                                <th>الخدمة</th>
+                                <th>التاريخ</th>
+                                <th>الوقت</th>
+                                <th>حالة الحجز</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- Payments -->
+            <div class="content-card" id="payments">
+                <h5 class="section-title">
+                    <i class="fa-solid fa-money-bill-wave ms-2"></i>متابعة المدفوعات
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>اسم المريض</th>
+                                <th>العيادة</th>
+                                <th>الخدمة</th>
+                                <th>المبلغ</th>
+                                <th>طريقة الدفع</th>
+                                <th>حالة الدفع</th>
+                                <th>الإجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- Appointments (read from the clinics' schedules) -->
+            <div class="content-card" id="appointments">
+                <h5 class="section-title">
+                    <i class="fa-solid fa-clock ms-2"></i>جدول مواعيد العيادات
+                </h5>
+                <small class="text-muted d-block mb-3">الجدول بيتعدل من لوحة تحكم مساعد كل عيادة، وهنا للعرض فقط.</small>
+                <div class="row" id="schedulesRow"></div>
+            </div>
+
+
+            <!-- Patients -->
+            <div class="content-card" id="patients">
+                <h5 class="section-title">
+                    <i class="fa-solid fa-users ms-2"></i>المرضى
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>الهاتف</th>
+                                <th>عدد الحجوزات</th>
+                                <th>آخر حجز</th>
+                                <th>إجمالي المدفوع</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <footer class="text-center text-muted mt-4 mb-3" id="footer">
+                <small>جميع الحقوق محفوظة © 2026 | نظام إدارة عيادات الأسنان</small>
+            </footer>
+
+        </main>
+    </div>
+</div>
+
+
+<!-- Details modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsTitle">تفاصيل الحجز</h5>
+                <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="detailsBody"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmTitle"></h5>
+                <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="confirmText"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">رجوع</button>
+                <button type="button" class="btn btn-danger" id="confirmOkBtn">تأكيد</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add booking modal -->
+<div class="modal fade" id="addBookingModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">إضافة حجز جديد</h5>
+                <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addBookingForm" novalidate>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">اسم المريض</label>
+                            <input type="text" class="form-control" id="abName">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="abPhone" placeholder="01xxxxxxxxx">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">العيادة</label>
+                            <select class="form-select" id="abClinic">
+                                <option value="">اختر العيادة</option>
+                                <option value="العيادة الرئيسية">عيادة ميدان المسلة</option>
+                                <option value="عيادة فرع المدينة">عيادة 6 أكتوبر</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">الخدمة</label>
+                            <select class="form-select" id="abService"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">التاريخ</label>
+                            <input type="date" class="form-control" id="abDate">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">الوقت</label>
+                            <select class="form-select" id="abTime" disabled>
+                                <option value="">اختر العيادة والتاريخ أولاً</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-danger small mt-3" id="abError"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                <button type="button" class="btn btn-main" id="abSaveBtn">حفظ الحجز</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./js/Dr.js"></script>
+
+</body>
+</html>
