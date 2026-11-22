@@ -1,0 +1,651 @@
+<!-- بعد التعديل -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجز موعد | ابتسامة</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="IBTESAMA_Style.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="./index.html">
+            ابتسامة
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false"
+                aria-label="فتح القائمة">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mx-auto my-3 my-lg-0 gap-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="./index.html">
+                        الصفحة الرئيسية
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html#services">
+                        الخدمات
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="./LANDING%20wep.html#contact">
+                        اتصل بنا
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2">
+                <a href="./profil%20user.html" class="btn btn-outline-primary rounded-3">
+                    <i class="fa-solid fa-user me-1"></i>
+                    الصفحة الشخصية
+                </a>
+
+                <a href="./IBTESAMA_Appointment.html" class="btn btn-primary rounded-3 active">
+                    <i class="fa-solid fa-calendar-check me-1"></i>
+                    حجز موعد
+                </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section class="page-heading">
+        <h1>احجز موعدك الآن</h1>
+        <p>يسعدنا اختيارك لعيادة ابتسامة لطب الأسنان</p>
+    </section>
+
+    <div class="booking-layout">
+
+        <form id="bookingForm" class="form-box">
+            <h2>بيانات الحجز</h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="patientName">اسم المريض</label>
+                    <input type="text" id="patientName"
+                           placeholder="اكتب الاسم بالكامل" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone"
+                           placeholder="01xxxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialty">نوع الخدمة</label>
+                    <select id="specialty" required>
+                        <option value="">اختر الخدمة</option>
+                        <option value="كشف أسنان">كشف أسنان - 200 جنيه</option>
+                        <option value="تنظيف الأسنان">تنظيف الأسنان - 350 جنيه</option>
+                        <option value="تبييض الأسنان">تبييض الأسنان - 1200 جنيه</option>
+                        <option value="تقويم الأسنان">تقويم الأسنان - 1500 جنيه</option>
+                        <option value="حشو الأسنان">حشو الأسنان - 500 جنيه</option>
+                        <option value="خلع الأسنان">خلع الأسنان - 400 جنيه</option>
+                        <option value="زراعة الأسنان">زراعة الأسنان - 5000 جنيه</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="clinic">العيادة</label>
+                    <select id="clinic" required>
+                        <option value="">اختر العيادة</option>
+                        <option value="العيادة الرئيسية">عيادة ميدان المسلة برج الأطباء</option>
+                        <option value="عيادة فرع المدينة">عيادة 6 أكتوبر بالفردوس</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">تاريخ الحجز</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">وقت الحجز</label>
+                    <select id="time" required>
+                        <option value="">اختر الوقت</option>
+                        <option value="10:00 صباحًا">10:00 صباحًا</option>
+                        <option value="11:00 صباحًا">11:00 صباحًا</option>
+                        <option value="12:00 ظهرًا">12:00 ظهرًا</option>
+                        <option value="02:00 مساءً">02:00 مساءً</option>
+                        <option value="03:00 مساءً">03:00 مساءً</option>
+                        <option value="04:00 مساءً">04:00 مساءً</option>
+                        <option value="05:00 مساءً">05:00 مساءً</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="reason">سبب الزيارة (اختياري)</label>
+                    <textarea id="reason"
+                              placeholder="اكتب تفاصيل إضافية إن وجدت"></textarea>
+                </div>
+
+            </div>
+
+            <button type="submit">الانتقال إلى الدفع</button>
+            <p id="bookingMessage" class="form-message"></p>
+        </form>
+
+        <aside class="summary-box">
+            <h2>ملخص الحجز</h2>
+
+            <p>اسم المريض <span id="sumName">---</span></p>
+            <p>الخدمة <span id="sumSpecialty">---</span></p>
+            <p>العيادة <span id="sumClinic">---</span></p>
+            <p>التاريخ <span id="sumDate">---</span></p>
+            <p>الوقت <span id="sumTime">---</span></p>
+
+            <hr>
+
+            <h3>الإجمالي <span id="sumPrice">0 جنيه</span></h3>
+        </aside>
+
+    </div>
+
+    <!-- قسم إلغاء الحجز -->
+    <section class="cancel-section">
+        <h3>
+            <i class="fa-solid fa-calendar-xmark"></i>
+            عايز تلغي حجزك؟
+        </h3>
+
+        <p>
+            تقدر تبحث عن حجزك باستخدام الاسم ورقم الهاتف المسجلين وقت الحجز.
+        </p>
+
+        <button type="button" id="openCancelBookingModal" class="cancel-open-btn">
+            <i class="fa-solid fa-ban me-1"></i>
+            إلغاء الحجز
+        </button>
+    </section>
+
+</main>
+
+<!-- نافذة إلغاء الحجز -->
+<div class="modal fade cancel-modal" id="cancelBookingModal"
+     tabindex="-1" aria-labelledby="cancelBookingTitle" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="cancelBookingTitle">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    إلغاء الحجز
+                </h5>
+
+                <button type="button" id="closeCancelBookingModal" class="btn-close"
+                        aria-label="إغلاق"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p class="text-muted">
+                    اكتب اسمك ورقم هاتفك المسجلين في الحجز للبحث عنه.
+                </p>
+
+                <form id="cancelSearchForm">
+
+                    <div class="mb-3">
+                        <label for="cancelPatientName" class="form-label">
+                            الاسم بالكامل
+                        </label>
+                        <input type="text" id="cancelPatientName"
+                               class="form-control"
+                               placeholder="اكتب الاسم المسجل في الحجز"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cancelPatientPhone" class="form-label">
+                            رقم الهاتف
+                        </label>
+                        <input type="tel" id="cancelPatientPhone"
+                               class="form-control"
+                               placeholder="01xxxxxxxxx"
+                               required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        البحث عن الحجز
+                    </button>
+
+                </form>
+
+                <div id="cancelResult" class="cancel-result">
+
+                    <h6 class="fw-bold mb-3">بيانات الحجز</h6>
+
+                    <p>الاسم: <strong id="cancelResultName">---</strong></p>
+                    <p>الخدمة: <strong id="cancelResultService">---</strong></p>
+                    <p>العيادة: <strong id="cancelResultClinic">---</strong></p>
+                    <p>التاريخ: <strong id="cancelResultDate">---</strong></p>
+                    <p>الوقت: <strong id="cancelResultTime">---</strong></p>
+                    <p>المبلغ: <strong id="cancelResultPrice">---</strong></p>
+
+                    <div class="alert alert-warning mt-3 mb-3">
+                        إرسال طلب الإلغاء لا يعني تنفيذ استرداد المبلغ تلقائيًا.
+                        أي عملية استرداد لدفع حقيقي تحتاج مراجعة العيادة.
+                    </div>
+
+                    <button type="button" id="confirmCancelBooking"
+                            class="cancel-confirm-btn w-100">
+                        تأكيد طلب الإلغاء
+                    </button>
+
+                </div>
+
+                <div id="cancelMessage" class="cancel-message"
+                     role="status" aria-live="polite"></div>
+
+                <p class="small text-muted mt-3 mb-0">
+                    البحث يعمل على بيانات الحجز المحفوظة على هذا الجهاز والمتصفح فقط.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>جميع الحقوق محفوظة © 2026 عيادة ابتسامة للأسنان</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./javascript/IBTESAMA_App.js" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // تشغيل نافذة الإلغاء سواء تم تحميل Bootstrap JavaScript أم لا.
+    const cancelModalElement = document.getElementById("cancelBookingModal");
+    const openCancelModalButton = document.getElementById("openCancelBookingModal");
+    const closeCancelModalButton = document.getElementById("closeCancelBookingModal");
+
+    function resetCancelModalForm() {
+        const form = document.getElementById("cancelSearchForm");
+        const result = document.getElementById("cancelResult");
+        const confirm = document.getElementById("confirmCancelBooking");
+        const message = document.getElementById("cancelMessage");
+        if (form) form.reset();
+        if (result) result.style.display = "none";
+        if (confirm) confirm.disabled = false;
+        if (message) { message.textContent = ""; message.className = "cancel-message"; }
+    }
+
+    function openCancelModal() {
+        if (!cancelModalElement) return;
+        if (window.bootstrap && window.bootstrap.Modal) {
+            window.bootstrap.Modal.getOrCreateInstance(cancelModalElement).show();
+        } else {
+            cancelModalElement.style.display = "block";
+            cancelModalElement.classList.add("show");
+            cancelModalElement.removeAttribute("aria-hidden");
+            cancelModalElement.setAttribute("aria-modal", "true");
+            document.body.classList.add("modal-open");
+            document.body.style.overflow = "hidden";
+        }
+    }
+
+    function closeCancelModal() {
+        if (!cancelModalElement) return;
+        if (window.bootstrap && window.bootstrap.Modal) {
+            window.bootstrap.Modal.getOrCreateInstance(cancelModalElement).hide();
+        } else {
+            cancelModalElement.classList.remove("show");
+            cancelModalElement.style.display = "none";
+            cancelModalElement.setAttribute("aria-hidden", "true");
+            cancelModalElement.removeAttribute("aria-modal");
+            document.body.classList.remove("modal-open");
+            document.body.style.overflow = "";
+            resetCancelModalForm();
+        }
+    }
+
+    openCancelModalButton?.addEventListener("click", openCancelModal);
+    closeCancelModalButton?.addEventListener("click", closeCancelModal);
+    cancelModalElement?.addEventListener("click", function (event) {
+        if (event.target === cancelModalElement) closeCancelModal();
+    });
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && cancelModalElement?.classList.contains("show")) {
+            closeCancelModal();
+        }
+    });
+
+    const STORAGE_KEY = "draft";
+    const CANCELLATION_KEY = "ibtesama_cancellation_requests";
+
+    const searchForm = document.getElementById("cancelSearchForm");
+    const nameInput = document.getElementById("cancelPatientName");
+    const phoneInput = document.getElementById("cancelPatientPhone");
+    const resultBox = document.getElementById("cancelResult");
+    const messageBox = document.getElementById("cancelMessage");
+    const confirmButton = document.getElementById("confirmCancelBooking");
+
+    let matchedBooking = null;
+
+    function normalizeName(value) {
+        return String(value || "")
+            .trim()
+            .replace(/\s+/g, " ")
+            .toLowerCase();
+    }
+
+    function normalizePhone(value) {
+        return String(value || "").replace(/\D/g, "");
+    }
+
+    function showMessage(message, type) {
+        messageBox.textContent = message;
+        messageBox.className = "cancel-message " + type;
+    }
+
+    function hideMessage() {
+        messageBox.textContent = "";
+        messageBox.className = "cancel-message";
+    }
+
+    function readBooking() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            return saved ? JSON.parse(saved) : null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function getBookingValue(booking, keys) {
+        for (const key of keys) {
+            if (booking && booking[key] !== undefined && booking[key] !== null) {
+                return booking[key];
+            }
+        }
+        return "";
+    }
+
+    function getBookingName(booking) {
+        return getBookingValue(booking, ["patientName", "name", "fullName"]);
+    }
+
+    function getBookingPhone(booking) {
+        return getBookingValue(booking, ["phone", "patientPhone", "mobile"]);
+    }
+
+    function getBookingPaymentStatus(booking) {
+        return String(getBookingValue(booking, [
+            "paymentStatus", "payment_status", "status"
+        ])).toLowerCase();
+    }
+
+    function showBookingDetails(booking) {
+        document.getElementById("cancelResultName").textContent =
+            getBookingName(booking) || "---";
+
+        document.getElementById("cancelResultService").textContent =
+            getBookingValue(booking, ["specialty", "service", "serviceName"]) || "---";
+
+        document.getElementById("cancelResultClinic").textContent =
+            getBookingValue(booking, ["clinic", "clinicName"]) || "---";
+
+        document.getElementById("cancelResultDate").textContent =
+            getBookingValue(booking, ["date", "bookingDate"]) || "---";
+
+        document.getElementById("cancelResultTime").textContent =
+            getBookingValue(booking, ["time", "bookingTime"]) || "---";
+
+        const price = getBookingValue(booking, ["price", "amount", "total"]);
+        document.getElementById("cancelResultPrice").textContent =
+            price !== "" ? price + " جنيه" : "---";
+
+        resultBox.style.display = "block";
+    }
+
+    searchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        hideMessage();
+        resultBox.style.display = "none";
+        matchedBooking = null;
+
+        const enteredName = normalizeName(nameInput.value);
+        const enteredPhone = normalizePhone(phoneInput.value);
+
+        if (!enteredName || !enteredPhone) {
+            showMessage("من فضلك اكتب الاسم ورقم الهاتف.", "error");
+            return;
+        }
+
+        const booking = readBooking();
+
+        if (!booking) {
+            showMessage(
+                "لم نعثر على حجز محفوظ على هذا الجهاز. قد يكون الحجز محفوظًا على جهاز أو متصفح آخر.",
+                "error"
+            );
+            return;
+        }
+
+        const savedName = normalizeName(getBookingName(booking));
+        const savedPhone = normalizePhone(getBookingPhone(booking));
+
+        if (enteredName !== savedName || enteredPhone !== savedPhone) {
+            showMessage(
+                "لم نعثر على حجز مطابق للاسم ورقم الهاتف المدخلين على هذا الجهاز.",
+                "error"
+            );
+            return;
+        }
+
+        if (booking.cancellationStatus === "requested" ||
+            booking.cancellationStatus === "cancelled_demo") {
+            showMessage("يوجد بالفعل طلب إلغاء مسجل لهذا الحجز.", "error");
+            return;
+        }
+
+        matchedBooking = booking;
+        showBookingDetails(booking);
+        showMessage("تم العثور على الحجز. راجع البيانات قبل تأكيد طلب الإلغاء.", "success");
+    });
+
+    confirmButton.addEventListener("click", function () {
+
+        if (!matchedBooking) {
+            showMessage("ابحث عن الحجز أولًا.", "error");
+            return;
+        }
+
+        const latestBooking = readBooking();
+
+        if (!latestBooking ||
+            normalizeName(getBookingName(latestBooking)) !== normalizeName(getBookingName(matchedBooking)) ||
+            normalizePhone(getBookingPhone(latestBooking)) !== normalizePhone(getBookingPhone(matchedBooking))) {
+            showMessage("تعذر التأكد من بيانات الحجز. أعد البحث مرة أخرى.", "error");
+            return;
+        }
+
+        if (latestBooking.cancellationStatus === "requested" ||
+            latestBooking.cancellationStatus === "cancelled_demo") {
+            showMessage("تم تسجيل طلب إلغاء لهذا الحجز من قبل.", "error");
+            return;
+        }
+
+        const paymentStatus = getBookingPaymentStatus(latestBooking);
+
+        const isDemoPayment =
+            paymentStatus.includes("simulated") ||
+            paymentStatus.includes("demo");
+
+        latestBooking.cancellationStatus = isDemoPayment
+            ? "cancelled_demo"
+            : "requested";
+
+        latestBooking.refundStatus = isDemoPayment
+            ? "not_applicable"
+            : "pending_manual_review";
+
+        latestBooking.cancellationRequestedAt = new Date().toISOString();
+
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(latestBooking));
+
+            let requests = [];
+
+            try {
+                requests = JSON.parse(localStorage.getItem(CANCELLATION_KEY)) || [];
+            } catch (error) {
+                requests = [];
+            }
+
+            requests.push({
+                bookingCode: latestBooking.bookingCode || "",
+                patientName: getBookingName(latestBooking),
+                phone: getBookingPhone(latestBooking),
+                specialty: getBookingValue(latestBooking, ["specialty", "service"]),
+                clinic: getBookingValue(latestBooking, ["clinic", "clinicName"]),
+                date: getBookingValue(latestBooking, ["date", "bookingDate"]),
+                time: getBookingValue(latestBooking, ["time", "bookingTime"]),
+                price: getBookingValue(latestBooking, ["price", "amount", "total"]),
+                cancellationStatus: latestBooking.cancellationStatus,
+                refundStatus: latestBooking.refundStatus,
+                requestedAt: latestBooking.cancellationRequestedAt
+            });
+
+            localStorage.setItem(CANCELLATION_KEY, JSON.stringify(requests));
+
+            matchedBooking = null;
+            resultBox.style.display = "none";
+            confirmButton.disabled = true;
+
+            if (isDemoPayment) {
+                showMessage(
+                    "تم تسجيل إلغاء الحجز التجريبي على هذا الجهاز. لا توجد عملية استرداد مالية حقيقية.",
+                    "success"
+                );
+            } else {
+                showMessage(
+                    "تم تسجيل طلب الإلغاء محليًا. إذا كان هناك دفع حقيقي، يجب على العيادة مراجعة الطلب وتنفيذ الاسترداد يدويًا من لوحة Paymob.",
+                    "success"
+                );
+            }
+
+        } catch (error) {
+            showMessage(
+                "حدث خطأ أثناء حفظ طلب الإلغاء. حاول مرة أخرى.",
+                "error"
+            );
+        }
+    });
+
+    cancelModalElement.addEventListener("hidden.bs.modal", function () {
+        searchForm.reset();
+        resultBox.style.display = "none";
+        confirmButton.disabled = false;
+        matchedBooking = null;
+        hideMessage();
+    });
+
+});
+</script>
+
+
+<script>
+/* ضمان تشغيل نموذج الحجز حتى لو تعطل ملف JavaScript الخارجي */
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('bookingForm');
+  if (!form || form.dataset.ibtesamaReady === '1') return;
+  form.dataset.ibtesamaReady = '1';
+
+  const get = id => document.getElementById(id);
+  const prices = {
+    'كشف أسنان': [200, 'https://paymob.link/U9Xd0'],
+    'تنظيف الأسنان': [350, 'https://paymob.link/KtRjl'],
+    'تبييض الأسنان': [1200, 'https://paymob.link/GbFqX'],
+    'تقويم الأسنان': [1500, 'https://paymob.link/Zi5vB'],
+    'حشو الأسنان': [500, 'https://paymob.link/kSjAD'],
+    'خلع الأسنان': [400, 'https://paymob.link/foKPE'],
+    'زراعة الأسنان': [5000, 'https://paymob.link/nWGZt']
+  };
+  const show = (message, type) => {
+    const box = get('bookingMessage');
+    if (box) { box.textContent = message; box.className = 'form-message ' + type; }
+  };
+  const summary = () => {
+    const service = get('specialty').value;
+    const values = {
+      sumName: get('patientName').value || '---',
+      sumSpecialty: service || '---',
+      sumClinic: get('clinic').value || '---',
+      sumDate: get('date').value || '---',
+      sumTime: get('time').value || '---',
+      sumPrice: prices[service] ? prices[service][0].toLocaleString('en-US') + ' جنيه' : '0 جنيه'
+    };
+    Object.keys(values).forEach(id => { if (get(id)) get(id).textContent = values[id]; });
+  };
+  form.addEventListener('input', summary);
+  form.addEventListener('change', summary);
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const name = get('patientName').value.trim();
+    const phone = get('phone').value.trim();
+    const specialty = get('specialty').value;
+    const clinic = get('clinic').value;
+    const date = get('date').value;
+    const time = get('time').value;
+    if (!name || !phone || !specialty || !clinic || !date || !time) {
+      show('من فضلك أكمل جميع البيانات المطلوبة.', 'error'); return;
+    }
+    if (!/^01[0125][0-9]{8}$/.test(phone)) {
+      show('من فضلك أدخل رقم هاتف مصري صحيح مكوّن من 11 رقمًا.', 'error'); return;
+    }
+    const chosen = new Date(date + 'T00:00:00');
+    const today = new Date(); today.setHours(0,0,0,0);
+    if (Number.isNaN(chosen.getTime()) || chosen < today) {
+      show('من فضلك اختر تاريخًا صحيحًا اليوم أو في المستقبل.', 'error'); return;
+    }
+    if (!prices[specialty]) { show('اختار خدمة صحيحة من القائمة.', 'error'); return; }
+    const booking = {
+      patientName: name, phone, specialty, clinic, date, time,
+      reason: get('reason').value.trim(), price: prices[specialty][0],
+      paymentLink: prices[specialty][1],
+      bookingCode: 'IBT-' + Date.now(), paymentStatus: 'pending',
+      paymentMethod: 'Paymob', createdAt: new Date().toISOString()
+    };
+    try {
+      localStorage.setItem('draft', JSON.stringify(booking));
+      show('تم حفظ بيانات الحجز. جاري الانتقال إلى صفحة الدفع.', 'success');
+      window.location.href = 'IBTESAMA_Payment.html';
+    } catch (error) {
+      show('المتصفح منع حفظ بيانات الحجز. افتح الموقع من متصفح عادي وليس وضع التصفح الخاص.', 'error');
+    }
+  }, true);
+  summary();
+});
+</script>
+
+</body>
+</html>
